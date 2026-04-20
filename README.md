@@ -17,7 +17,7 @@ A modern, single-page application (SPA) built for the ** Sri jinanandha English 
 ## 🚀 Live Demo
 
 *(Add your GitHub Pages link here once deployed)*
-[View the Live Website Here](https://yourusername.github.io/daham-school-website)
+[View the Live Website Here]((https://madhuravishan.github.io/Sri-Jinanandha-English-Medium-Dhamma-School/))
 
 ## 🛠️ Technology Stack (Current)
 
