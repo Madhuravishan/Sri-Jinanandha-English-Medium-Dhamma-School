@@ -4,7 +4,7 @@
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
-A modern, single-page application (SPA) built for the **Metta English Medium Daham School**. This website serves as the digital front door for the school, providing parents and students with easy access to announcements, syllabus details, and contact information.
+A modern, single-page application (SPA) built for the ** Sri jinanandha English Medium Daham School**. This website serves as the digital front door for the school, providing parents and students with easy access to announcements, syllabus details, and contact information.
 
 ## 🌟 Features
 
