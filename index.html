@@ -1,313 +1,1382 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Medium Daham School</title>
+    <!-- [CUSTOMIZE]: Update title and meta description for SEO -->
+    <title>Sri Jinanandha English Medium Dhamma School</title>
+    <meta name="description" content="Guiding the next generation in the Dhamma. Sri Jinanandha English Medium Dhamma School.">
     
-    <!-- Tailwind CSS (CDN) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Tailwind Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brandWhite: '#FAFAFA',
-                        brandYellow: '#FFFBEB',
-                        brandGold: '#D97706',
-                        brandDark: '#1F2937',
-                    }
-                }
-            }
+    <!-- Google Fonts for elegant typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+           BEM CSS ARCHITECTURE - CUSTOM STYLESHEET
+           ========================================================================== */
+        
+        :root {
+            /* Color Palette */
+            --col-navy: #1A3A52;
+            --col-maroon: #6B3E2E;
+            --col-saffron-soft: #D4A574;
+            --col-gold: #E6A817;
+            --col-white: #FFFFFF;
+            --col-bg-light: #FAFAFC;
+            --col-text-main: #333333;
+            --col-text-muted: #666666;
+            --col-border: #EAEAEA;
+            
+            /* Typography */
+            --font-heading: 'Lora', serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Shadows & Radii */
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 20px 40px rgba(26, 58, 82, 0.1);
+            --radius-md: 12px;
+            --radius-lg: 24px;
+            --radius-full: 9999px;
+            
+            /* Transitions */
+            --trans-fast: 0.2s ease;
+            --trans-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-    </script>
 
-    <!-- AOS Animation CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--col-text-main);
+            background-color: var(--col-bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--col-navy);
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Reusable Layout Blocks */
+        .ds-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .ds-section {
+            padding: 96px 0;
+        }
+
+        .ds-section--alternate {
+            background-color: var(--col-white);
+        }
+
+        .ds-section__header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .ds-section__title {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: var(--col-maroon);
+        }
+
+        .ds-section__subtitle {
+            font-size: 1.125rem;
+            color: var(--col-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Buttons */
+        .ds-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all var(--trans-smooth);
+            border: none;
+        }
+
+        .ds-btn--primary {
+            background-color: var(--col-maroon);
+            color: var(--col-white);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .ds-btn--primary:hover, .ds-btn--primary:focus {
+            background-color: var(--col-navy);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            outline: none;
+        }
+
+        .ds-btn--outline {
+            background-color: transparent;
+            color: var(--col-maroon);
+            border: 2px solid var(--col-maroon);
+        }
+
+        .ds-btn--outline:hover, .ds-btn--outline:focus {
+            background-color: var(--col-maroon);
+            color: var(--col-white);
+            outline: none;
+        }
+
+        /* Header Component */
+        .ds-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--col-border);
+            z-index: 1000;
+            transition: all var(--trans-fast);
+        }
+
+        .ds-header--scrolled {
+            box-shadow: var(--shadow-sm);
+            padding: 4px 0;
+        }
+
+        .ds-header__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .ds-header__brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--col-maroon);
+        }
+
+        .ds-header__logo-placeholder {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--col-gold), var(--col-saffron-soft));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .ds-nav__list {
+            display: flex;
+            gap: 32px;
+        }
+
+        .ds-nav__link {
+            font-weight: 500;
+            color: var(--col-navy);
+            transition: color var(--trans-fast);
+            position: relative;
+        }
+
+        .ds-nav__link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--col-gold);
+            transition: width var(--trans-fast);
+        }
+
+        .ds-nav__link:hover::after,
+        .ds-nav__link--active::after {
+            width: 100%;
+        }
+
+        .ds-nav__link:hover,
+        .ds-nav__link--active {
+            color: var(--col-maroon);
+        }
+
+        .ds-header__mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--col-navy);
+            cursor: pointer;
+        }
+
+        /* Hero Component */
+        .ds-hero {
+            padding-top: 160px;
+            padding-bottom: 120px;
+            background: linear-gradient(135deg, var(--col-bg-light) 0%, #F0E8DD 100%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .ds-hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(230,168,23,0.1) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+        }
+
+        .ds-hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(230, 168, 23, 0.15);
+            color: var(--col-maroon);
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 24px;
+            border: 1px solid rgba(230, 168, 23, 0.3);
+        }
+
+        .ds-hero__title {
+            font-size: 4rem;
+            color: var(--col-navy);
+            margin-bottom: 24px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .ds-hero__tagline {
+            font-size: 1.25rem;
+            color: var(--col-text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+
+        .ds-hero__actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        /* About Component */
+        .ds-about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .ds-about__content p {
+            margin-bottom: 16px;
+            font-size: 1.125rem;
+        }
+
+        .ds-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .ds-stat-card {
+            background: var(--col-white);
+            padding: 32px 24px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: transform var(--trans-smooth), box-shadow var(--trans-smooth);
+            border: 1px solid var(--col-border);
+        }
+
+        .ds-stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .ds-stat-card__icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .ds-stat-card__value {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--col-maroon);
+            margin-bottom: 4px;
+        }
+
+        .ds-stat-card__label {
+            font-weight: 500;
+            color: var(--col-text-muted);
+        }
+
+        /* Core Values */
+        .ds-values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 64px;
+        }
+
+        .ds-value-card {
+            background: var(--col-white);
+            padding: 32px 24px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: all var(--trans-smooth);
+        }
+
+        .ds-value-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px);
+        }
+
+        .ds-value-card__icon {
+            width: 64px;
+            height: 64px;
+            background-color: rgba(212, 165, 116, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 24px auto;
+        }
+
+        .ds-value-card__title {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: var(--col-navy);
+        }
+
+        .ds-value-card__desc {
+            font-size: 0.9375rem;
+            color: var(--col-text-muted);
+        }
+
+        /* Precepts List */
+        .ds-precepts {
+            background-color: var(--col-bg-light);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .ds-precepts__title {
+            text-align: center;
+            margin-bottom: 32px;
+            color: var(--col-maroon);
+        }
+
+        .ds-precepts__list {
+            counter-reset: precept-counter;
+        }
+
+        .ds-precepts__item {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 24px;
+            font-size: 1.125rem;
+        }
+
+        .ds-precepts__item::before {
+            counter-increment: precept-counter;
+            content: counter(precept-counter);
+            position: absolute;
+            left: 0;
+            top: -4px;
+            width: 32px;
+            height: 32px;
+            background-color: var(--col-saffron-soft);
+            color: var(--col-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-family: var(--font-heading);
+        }
+
+        /* Community Tabs */
+        .ds-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .ds-tabs__btn {
+            background: none;
+            border: none;
+            padding: 12px 32px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--col-text-muted);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all var(--trans-fast);
+            font-family: var(--font-heading);
+        }
+
+        .ds-tabs__btn:hover {
+            color: var(--col-maroon);
+        }
+
+        .ds-tabs__btn--active {
+            color: var(--col-maroon);
+            border-bottom-color: var(--col-maroon);
+        }
+
+        .ds-tabs__pane {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .ds-tabs__pane--active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Profile Cards */
+        .ds-profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+        }
+
+        .ds-profile-card {
+            background: var(--col-bg-light);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            text-align: center;
+            transition: transform var(--trans-fast);
+        }
+
+        .ds-profile-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .ds-profile-card__avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background-color: var(--col-white);
+            box-shadow: var(--shadow-sm);
+            margin: 0 auto 24px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border: 2px solid var(--col-saffron-soft);
+        }
+
+        .ds-profile-card__name {
+            font-size: 1.25rem;
+            color: var(--col-navy);
+            margin-bottom: 4px;
+        }
+
+        .ds-profile-card__role {
+            font-size: 0.875rem;
+            color: var(--col-maroon);
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .ds-profile-card__bio {
+            font-size: 0.9375rem;
+            color: var(--col-text-muted);
+        }
+
+        /* Events Timeline */
+        .ds-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .ds-timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--col-saffron-soft);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 4px;
+        }
+
+        .ds-timeline__item {
+            padding: 16px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .ds-timeline__item--left {
+            left: 0;
+            text-align: right;
+        }
+
+        .ds-timeline__item--right {
+            left: 50%;
+        }
+
+        .ds-timeline__item::after {
+            content: '🗓️';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            right: -20px;
+            background-color: var(--col-white);
+            border: 4px solid var(--col-maroon);
+            top: 24px;
+            border-radius: 50%;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .ds-timeline__item--right::after {
+            left: -20px;
+        }
+
+        .ds-timeline__content {
+            padding: 24px;
+            background-color: var(--col-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--col-border);
+            transition: transform var(--trans-fast);
+        }
+        
+        .ds-timeline__content:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-md);
+        }
+
+        .ds-timeline__date {
+            color: var(--col-maroon);
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .ds-timeline__title {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        /* Contact Section */
+        .ds-contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+        }
+
+        .ds-contact__info-box {
+            background-color: var(--col-bg-light);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+        }
+
+        .ds-contact__detail {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .ds-contact__icon {
+            font-size: 1.5rem;
+            color: var(--col-maroon);
+        }
+
+        .ds-contact__text h4 {
+            font-size: 1.125rem;
+            margin-bottom: 4px;
+        }
+
+        .ds-contact__text p {
+            color: var(--col-text-muted);
+            white-space: pre-line;
+        }
+
+        .ds-form {
+            background: var(--col-white);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .ds-form__group {
+            margin-bottom: 24px;
+        }
+
+        .ds-form__label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--col-navy);
+        }
+
+        .ds-form__input,
+        .ds-form__textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--col-border);
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color var(--trans-fast);
+            background-color: var(--col-bg-light);
+        }
+
+        .ds-form__input:focus,
+        .ds-form__textarea:focus {
+            outline: none;
+            border-color: var(--col-saffron-soft);
+            background-color: var(--col-white);
+        }
+
+        .ds-form__textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .ds-form__message {
+            display: none;
+            padding: 16px;
+            background-color: #E6F4EA;
+            color: #1E4620;
+            border-radius: var(--radius-md);
+            margin-top: 16px;
+            text-align: center;
+        }
+
+        /* Footer */
+        .ds-footer {
+            background-color: var(--col-navy);
+            color: var(--col-white);
+            padding: 80px 0 24px 0;
+        }
+
+        .ds-footer__grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 64px;
+            margin-bottom: 64px;
+        }
+
+        .ds-footer__brand h3 {
+            color: var(--col-white);
+            margin-bottom: 16px;
+        }
+
+        .ds-footer__brand p {
+            color: rgba(255,255,255,0.7);
+            max-width: 400px;
+        }
+
+        .ds-footer__title {
+            color: var(--col-gold);
+            font-size: 1.125rem;
+            margin-bottom: 24px;
+        }
+
+        .ds-footer__links li {
+            margin-bottom: 12px;
+        }
+
+        .ds-footer__links a {
+            color: rgba(255,255,255,0.7);
+            transition: color var(--trans-fast);
+        }
+
+        .ds-footer__links a:hover {
+            color: var(--col-white);
+        }
+
+        .ds-footer__social {
+            display: flex;
+            gap: 16px;
+        }
+
+        .ds-footer__social a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color var(--trans-fast);
+        }
+
+        .ds-footer__social a:hover {
+            background-color: var(--col-gold);
+        }
+
+        .ds-footer__bottom {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.875rem;
+        }
+
+        /* Back to top */
+        .ds-back-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 48px;
+            height: 48px;
+            background-color: var(--col-maroon);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--trans-fast);
+            border: none;
+            z-index: 99;
+        }
+
+        .ds-back-top--visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 992px) {
+            .ds-hero__title { font-size: 3rem; }
+            .ds-about, .ds-contact, .ds-footer__grid { grid-template-columns: 1fr; gap: 48px; }
+            .ds-values-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            /* Timeline responsive adjustments */
+            .ds-timeline::after { left: 31px; }
+            .ds-timeline__item { width: 100%; padding-left: 80px; padding-right: 0; }
+            .ds-timeline__item--left, .ds-timeline__item--right { left: 0; text-align: left; }
+            .ds-timeline__item--left::after, .ds-timeline__item--right::after { left: 11px; }
+        }
+
+        @media screen and (max-width: 768px) {
+            .ds-header__mobile-toggle { display: block; }
+            .ds-nav__list {
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--col-white);
+                flex-direction: column;
+                gap: 0;
+                box-shadow: var(--shadow-md);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: clip-path var(--trans-smooth);
+            }
+            .ds-nav__list--open {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            .ds-nav__link {
+                display: block;
+                padding: 20px 24px;
+                border-bottom: 1px solid var(--col-border);
+            }
+            .ds-nav__link::after { display: none; }
+            
+            .ds-hero { padding-top: 120px; padding-bottom: 80px; }
+            .ds-hero__title { font-size: 2.25rem; }
+            .ds-section { padding: 64px 0; }
+            .ds-values-grid, .ds-stats { grid-template-columns: 1fr; }
+            .ds-hero__actions { flex-direction: column; }
+            .ds-precepts { padding: 24px; }
+            
+            .ds-tabs { flex-direction: column; }
+            .ds-tabs__btn { border-bottom: none; border-left: 3px solid transparent; text-align: left; }
+            .ds-tabs__btn--active { border-bottom-color: transparent; border-left-color: var(--col-maroon); background-color: var(--col-bg-light); }
+        }
+    </style>
 </head>
-<body class="bg-brandWhite text-brandDark font-sans antialiased overflow-x-hidden">
+<body>
 
-    <!-- ================= HEADER & NAVIGATION ================= -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo text -->
-                <div class="flex-shrink-0">
-                    <a href="#home" class="text-xl md:text-2xl font-bold text-brandGold tracking-wide">
-                        Sri Jinanandha English Medium Dhamma School
-                    </a>
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-brandGold font-medium transition duration-300">Home</a>
-                    <a href="#notices" class="text-gray-700 hover:text-brandGold font-medium transition duration-300">Notices</a>
-                    <a href="#about" class="text-gray-700 hover:text-brandGold font-medium transition duration-300">About Us</a>
-                    <a href="#classes" class="text-gray-700 hover:text-brandGold font-medium transition duration-300">Classes</a>
-                    <a href="#gallery" class="text-gray-700 hover:text-brandGold font-medium transition duration-300">Gallery</a>
-                    <a href="#contact" class="text-gray-700 hover:text-brandGold font-medium transition duration-300">Contact</a>
-                </nav>
+    <!-- =========================================================================
+         CUSTOMIZATION GUIDE (READ BEFORE EDITING):
+         Search for "[CUSTOMIZE]" tags in this file to find areas needing your input.
+         1. Replace School Name & Tagline in Hero/Header/Footer
+         2. Add History paragraphs in About Section
+         3. Add actual faculty/student names in Community Section
+         4. Add real event dates in Events Section
+         5. Update Contact details
+         All layout, styling, and interactivity will remain intact!
+         ========================================================================= -->
 
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-brandDark hover:text-brandGold focus:outline-none">
-                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
+    <!-- HEADER & NAVIGATION -->
+    <header class="ds-header" id="header">
+        <div class="ds-container ds-header__inner">
+            <a href="#home" class="ds-header__brand" aria-label="Go to homepage">
+                <!-- [CUSTOMIZE]: You can replace this placeholder div with an actual <img> tag later -->
+                <div class="ds-header__logo-placeholder">🪷</div>
+                <span>Sri Jinanandha Dhamma School</span>
+            </a>
 
-        <!-- Mobile Navigation Menu (Hidden by default) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-inner">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-brandGold hover:bg-brandYellow rounded-md">Home</a>
-                <a href="#notices" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-brandGold hover:bg-brandYellow rounded-md">Notices</a>
-                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-brandGold hover:bg-brandYellow rounded-md">About Us</a>
-                <a href="#classes" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-brandGold hover:bg-brandYellow rounded-md">Classes</a>
-                <a href="#gallery" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-brandGold hover:bg-brandYellow rounded-md">Gallery</a>
-                <a href="#contact" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-brandGold hover:bg-brandYellow rounded-md">Contact</a>
-            </div>
+            <button class="ds-header__mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
+                ☰
+            </button>
+
+            <nav class="ds-nav" aria-label="Main Navigation">
+                <ul class="ds-nav__list" id="navList">
+                    <li><a href="#home" class="ds-nav__link ds-nav__link--active">Home</a></li>
+                    <li><a href="#about" class="ds-nav__link">About Us</a></li>
+                    <li><a href="#mission" class="ds-nav__link">Mission</a></li>
+                    <li><a href="#community" class="ds-nav__link">Community</a></li>
+                    <li><a href="#events" class="ds-nav__link">Events</a></li>
+                    <li><a href="#contact" class="ds-nav__link">Contact</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- ================= HERO SECTION ================= -->
-    <section id="home" class="bg-brandYellow pt-24 pb-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 data-aos="fade-down" data-aos-duration="1000" class="text-4xl md:text-5xl lg:text-6xl font-bold text-brandDark mb-6 leading-tight">
-                Guiding the Next Generation in the Dhamma
+    <!-- HERO SECTION -->
+    <section class="ds-hero" id="home">
+        <div class="ds-container">
+            <!-- [CUSTOMIZE]: Change Jubilee years if needed -->
+            <div class="ds-hero__badge">
+                <span>✨</span> Golden Jubilee Celebration (1976 - 2026)
+            </div>
+            
+            <h1 class="ds-hero__title">
+                <!-- [CUSTOMIZE]: Main headline -->
+                Guiding the Next Generation in the Pure Dhamma
             </h1>
-            <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" class="max-w-3xl mx-auto text-lg md:text-xl text-gray-700 mb-10 leading-relaxed">
-                Welcome to our Daham School. We are dedicated to providing a strong spiritual foundation and teaching the profound teachings of the Buddha in the English medium, helping students build moral character for a peaceful and mindful life.
+            
+            <p class="ds-hero__tagline">
+                <!-- [CUSTOMIZE]: School Tagline -->
+                Welcome to Sri Jinanandha English Medium Dhamma School. We provide a strong spiritual foundation, helping students build moral character for a peaceful and mindful life.
             </p>
-            <div data-aos="zoom-in" data-aos-delay="400">
-                <a href="#classes" class="inline-block bg-brandGold text-white text-lg font-semibold px-8 py-4 rounded-full shadow-lg hover:bg-yellow-600 transition transform hover:scale-105 duration-300">
-                    View Syllabus
-                </a>
+            
+            <div class="ds-hero__actions">
+                <a href="#about" class="ds-btn ds-btn--primary">Learn Our Story</a>
+                <a href="#contact" class="ds-btn ds-btn--outline">Get in Touch</a>
             </div>
         </div>
     </section>
 
-    <!-- ================= NOTICE BOARD SECTION ================= -->
-    <section id="notices" class="py-20 bg-brandWhite">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-bold text-brandGold mb-4">Notice Board</h2>
-                <div class="w-20 h-1 bg-brandGold mx-auto rounded-full"></div>
+    <!-- ABOUT & HERITAGE SECTION -->
+    <section class="ds-section ds-section--alternate" id="about">
+        <div class="ds-container">
+            <div class="ds-section__header">
+                <h2 class="ds-section__title">Our Heritage & History</h2>
+                <p class="ds-section__subtitle">A legacy of virtue, wisdom, and compassionate teaching.</p>
             </div>
-            
-            <div class="bg-white rounded-2xl shadow-xl p-6 md:p-10 border border-gray-100" data-aos="fade-up" data-aos-delay="100">
-                <ul class="space-y-6">
-                    <li class="p-4 bg-brandYellow rounded-lg border-l-4 border-brandGold transition transform hover:translate-x-2 duration-300">
-                        <p class="text-gray-800 font-medium">Registration for the new academic term is now open. Please visit the temple office this Sunday to collect your enrollment forms.</p>
-                    </li>
-                    <li class="p-4 bg-brandYellow rounded-lg border-l-4 border-brandGold transition transform hover:translate-x-2 duration-300">
-                        <p class="text-gray-800 font-medium">Our special Sil program for the upcoming Poya day will commence at 6:00 AM. All students and parents are warmly invited to participate.</p>
-                    </li>
-                    <li class="p-4 bg-brandYellow rounded-lg border-l-4 border-brandGold transition transform hover:translate-x-2 duration-300">
-                        <p class="text-gray-800 font-medium">Congratulations to all our Advanced Level students who successfully completed their final Dhamma School examinations!</p>
-                    </li>
+
+            <div class="ds-about">
+                <div class="ds-about__content">
+                    <!-- [CUSTOMIZE]: Add your school's 2-3 paragraph history here -->
+                    <p>Marking the pride of half a century of noble Dhamma service, our Dhamma School began as a humble endeavor and stands unwavering today, having awakened the wisdom of thousands of children.</p>
+                    <p>No matter how much society changes, our dedication to gifting the nation a virtuous, respectful, and moral generation through the pure teachings of the Buddha remains our highest priority. We guide children on the right path by cultivating loving-kindness (Metta) and patience in their hearts.</p>
+                    <p>Supported by the Venerable Maha Sangha and our dedicated volunteer teachers, we continue to illuminate the spiritual path for our youth.</p>
+                </div>
+
+                <div class="ds-stats">
+                    <!-- [CUSTOMIZE]: Update these numerical statistics -->
+                    <div class="ds-stat-card">
+                        <div class="ds-stat-card__icon">🏛️</div>
+                        <div class="ds-stat-card__value">1976</div>
+                        <div class="ds-stat-card__label">Year Founded</div>
+                    </div>
+                    <div class="ds-stat-card">
+                        <div class="ds-stat-card__icon">👨‍🎓</div>
+                        <div class="ds-stat-card__value">500+</div>
+                        <div class="ds-stat-card__label">Current Students</div>
+                    </div>
+                    <div class="ds-stat-card">
+                        <div class="ds-stat-card__icon">👨‍🏫</div>
+                        <div class="ds-stat-card__value">25</div>
+                        <div class="ds-stat-card__label">Volunteer Teachers</div>
+                    </div>
+                    <div class="ds-stat-card">
+                        <div class="ds-stat-card__icon">🎖️</div>
+                        <div class="ds-stat-card__value">10k+</div>
+                        <div class="ds-stat-card__label">Proud Alumni</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISSION & VALUES SECTION -->
+    <section class="ds-section" id="mission">
+        <div class="ds-container">
+            <div class="ds-section__header">
+                <h2 class="ds-section__title">Our Mission & Core Values</h2>
+                <p class="ds-section__subtitle">
+                    <!-- [CUSTOMIZE]: Write your school's core mission statement -->
+                    To impart the teachings of Buddhism in English, fostering discipline, mindfulness, and empathy in our youth to navigate modern challenges.
+                </p>
+            </div>
+
+            <!-- Core Pillars -->
+            <div class="ds-values-grid">
+                <!-- [CUSTOMIZE]: Modify pillar titles and descriptions -->
+                <div class="ds-value-card">
+                    <div class="ds-value-card__icon">💡</div>
+                    <h3 class="ds-value-card__title">Wisdom (Paññā)</h3>
+                    <p class="ds-value-card__desc">Cultivating deep understanding of the Dhamma through structured English-medium education.</p>
+                </div>
+                <div class="ds-value-card">
+                    <div class="ds-value-card__icon">❤️</div>
+                    <h3 class="ds-value-card__title">Compassion (Mettā)</h3>
+                    <p class="ds-value-card__desc">Teaching children to approach all living beings with boundless loving-kindness.</p>
+                </div>
+                <div class="ds-value-card">
+                    <div class="ds-value-card__icon">🌱</div>
+                    <h3 class="ds-value-card__title">Virtue (Sīla)</h3>
+                    <p class="ds-value-card__desc">Building strong moral character based on the timeless precepts of the Buddha.</p>
+                </div>
+                <div class="ds-value-card">
+                    <div class="ds-value-card__icon">🧘</div>
+                    <h3 class="ds-value-card__title">Mindfulness (Sati)</h3>
+                    <p class="ds-value-card__desc">Practicing daily meditation to develop focus, calmness, and mental clarity.</p>
+                </div>
+            </div>
+
+            <!-- The Five Precepts -->
+            <div class="ds-precepts">
+                <h3 class="ds-precepts__title">Guiding Principles: The Five Noble Precepts</h3>
+                <ul class="ds-precepts__list">
+                    <!-- [CUSTOMIZE]: Precept descriptions can be adjusted -->
+                    <li class="ds-precepts__item">I undertake the precept to refrain from destroying living creatures. (Cultivating Compassion)</li>
+                    <li class="ds-precepts__item">I undertake the precept to refrain from taking that which is not given. (Cultivating Generosity)</li>
+                    <li class="ds-precepts__item">I undertake the precept to refrain from sexual misconduct. (Cultivating Contentment)</li>
+                    <li class="ds-precepts__item">I undertake the precept to refrain from incorrect speech. (Cultivating Truthfulness)</li>
+                    <li class="ds-precepts__item">I undertake the precept to refrain from intoxicating drinks and drugs which lead to carelessness. (Cultivating Mindfulness)</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- ================= ABOUT US SECTION ================= -->
-    <section id="about" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                
-                <!-- Image Column -->
-                <div data-aos="fade-right" data-aos-duration="1000" class="overflow-hidden rounded-2xl shadow-2xl">
-                    <img src="https://via.placeholder.com/800x600/E5E7EB/9CA3AF?text=School+Premises" alt="School Premises" class="w-full h-auto object-cover transform hover:scale-105 transition duration-700">
+    <!-- COMMUNITY SECTION (TABS) -->
+    <section class="ds-section ds-section--alternate" id="community">
+        <div class="ds-container">
+            <div class="ds-section__header">
+                <h2 class="ds-section__title">Our Dhamma Community</h2>
+                <p class="ds-section__subtitle">Meet the dedicated individuals who make our school a sanctuary of learning.</p>
+            </div>
+
+            <!-- Tab Controls -->
+            <div class="ds-tabs" role="tablist">
+                <button class="ds-tabs__btn ds-tabs__btn--active" onclick="openTab(event, 'facultyTab')" role="tab" aria-selected="true">Faculty & Teachers</button>
+                <button class="ds-tabs__btn" onclick="openTab(event, 'studentTab')" role="tab" aria-selected="false">Student Leadership</button>
+            </div>
+
+            <!-- Tab 1: Faculty -->
+            <div id="facultyTab" class="ds-tabs__pane ds-tabs__pane--active" role="tabpanel">
+                <div class="ds-profile-grid">
+                    <!-- [CUSTOMIZE]: Replace Faculty details -->
+                    <div class="ds-profile-card">
+                        <div class="ds-profile-card__avatar">🙏</div>
+                        <h4 class="ds-profile-card__name">Ven. [Monk Name] Thero</h4>
+                        <p class="ds-profile-card__role">Principal Monk</p>
+                        <p class="ds-profile-card__bio">Guiding the spiritual direction of the school with over 20 years of Dhamma teaching experience.</p>
+                    </div>
+                    <div class="ds-profile-card">
+                        <div class="ds-profile-card__avatar">👩‍🏫</div>
+                        <h4 class="ds-profile-card__name">Mrs. [Teacher Name]</h4>
+                        <p class="ds-profile-card__role">Academic Director</p>
+                        <p class="ds-profile-card__bio">Ensuring the English-medium curriculum aligns beautifully with traditional Buddhist values.</p>
+                    </div>
+                    <div class="ds-profile-card">
+                        <div class="ds-profile-card__avatar">👨‍🏫</div>
+                        <h4 class="ds-profile-card__name">Mr. [Teacher Name]</h4>
+                        <p class="ds-profile-card__role">Senior Dhamma Instructor</p>
+                        <p class="ds-profile-card__bio">Specializes in teaching Abhidhamma and practical application of Buddha's teachings.</p>
+                    </div>
+                    <div class="ds-profile-card">
+                        <div class="ds-profile-card__avatar">🧘‍♀️</div>
+                        <h4 class="ds-profile-card__name">Ms. [Teacher Name]</h4>
+                        <p class="ds-profile-card__role">Mindfulness Facilitator</p>
+                        <p class="ds-profile-card__bio">Leads weekly meditation sessions for both primary and advanced level students.</p>
+                    </div>
                 </div>
-                
-                <!-- Text Column -->
-                <div data-aos="fade-left" data-aos-duration="1000" class="lg:pl-8">
-                    <h2 class="text-3xl md:text-4xl font-bold text-brandGold mb-6">Our Mission</h2>
-                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                        Our mission is to impart the teachings of Buddhism in English, fostering discipline, mindfulness, and empathy in our youth. We guide children from primary grades up to the Daham Pasala Final Certificate, blending traditional Buddhist values with modern, accessible educational approaches.
-                    </p>
-                    <p class="text-lg text-gray-700 leading-relaxed">
-                        Our dedicated teachers volunteer their time to ensure every child feels supported on their spiritual journey.
-                    </p>
+            </div>
+
+            <!-- Tab 2: Students -->
+            <div id="studentTab" class="ds-tabs__pane" role="tabpanel">
+                <div class="ds-profile-grid">
+                    <!-- [CUSTOMIZE]: Replace Student Leader details -->
+                    <div class="ds-profile-card">
+                        <div class="ds-profile-card__avatar">👑</div>
+                        <h4 class="ds-profile-card__name">[Student Name]</h4>
+                        <p class="ds-profile-card__role">Head Prefect</p>
+                        <p class="ds-profile-card__bio">Exemplifying discipline and compassion, guiding fellow students by example.</p>
+                    </div>
+                    <div class="ds-profile-card">
+                        <div class="ds-profile-card__avatar">⭐</div>
+                        <h4 class="ds-profile-card__name">[Student Name]</h4>
+                        <p class="ds-profile-card__role">Deputy Head Prefect</p>
+                        <p class="ds-profile-card__bio">Assisting in organizing school ceremonies and maintaining harmony among students.</p>
+                    </div>
+                    <div class="ds-profile-card">
+                        <div class="ds-profile-card__avatar">👥</div>
+                        <h4 class="ds-profile-card__name">Student Council</h4>
+                        <p class="ds-profile-card__role">Prefects Guild</p>
+                        <p class="ds-profile-card__bio">A dedicated group of senior students organizing Dāna programs and temple clean-ups.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EVENTS & CALENDAR SECTION -->
+    <section class="ds-section" id="events">
+        <div class="ds-container">
+            <div class="ds-section__header">
+                <h2 class="ds-section__title">Spiritual Calendar & Events</h2>
+                <p class="ds-section__subtitle">Join us in celebrating these significant days in the Buddhist calendar.</p>
+            </div>
+
+            <div class="ds-timeline">
+                <!-- [CUSTOMIZE]: Update Event Names, Dates, and Descriptions -->
+                <div class="ds-timeline__item ds-timeline__item--left">
+                    <div class="ds-timeline__content">
+                        <span class="ds-timeline__date">July 5, [YEAR]</span>
+                        <h3 class="ds-timeline__title">Poson Poya Celebration</h3>
+                        <p>Special Sil campaign and Dhamma discussions commemorating the arrival of Buddhism to Sri Lanka.</p>
+                    </div>
                 </div>
 
+                <div class="ds-timeline__item ds-timeline__item--right">
+                    <div class="ds-timeline__content">
+                        <span class="ds-timeline__date">August 16, 2026</span>
+                        <h3 class="ds-timeline__title">50th Golden Jubilee Ceremony</h3>
+                        <p>A grand celebration marking half a century of Dhamma service, featuring special guest monks and alumni.</p>
+                    </div>
+                </div>
+
+                <div class="ds-timeline__item ds-timeline__item--left">
+                    <div class="ds-timeline__content">
+                        <span class="ds-timeline__date">October 20, [YEAR]</span>
+                        <h3 class="ds-timeline__title">Annual Prize Giving</h3>
+                        <p>Recognizing the academic and behavioral achievements of our dedicated students over the past year.</p>
+                    </div>
+                </div>
+
+                <div class="ds-timeline__item ds-timeline__item--right">
+                    <div class="ds-timeline__content">
+                        <span class="ds-timeline__date">November 14, [YEAR]</span>
+                        <h3 class="ds-timeline__title">Katina Pinkama</h3>
+                        <p>Students and parents unite to offer the Katina Robe to the resident monks, a highly meritorious deed.</p>
+                    </div>
+                </div>
+
+                <div class="ds-timeline__item ds-timeline__item--left">
+                    <div class="ds-timeline__content">
+                        <span class="ds-timeline__date">December 25, [YEAR]</span>
+                        <h3 class="ds-timeline__title">Bodhi Puja & Year-End Blessings</h3>
+                        <p>A serene evening Bodhi Puja to invoke blessings for the upcoming new year for all beings.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ================= CLASSES & SYLLABUS SECTION ================= -->
-    <section id="classes" class="py-20 bg-brandYellow">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-bold text-brandGold mb-4">Classes & Syllabus</h2>
-                <div class="w-20 h-1 bg-brandGold mx-auto rounded-full"></div>
+    <!-- CONTACT SECTION -->
+    <section class="ds-section ds-section--alternate" id="contact">
+        <div class="ds-container">
+            <div class="ds-section__header">
+                <h2 class="ds-section__title">Get in Touch</h2>
+                <p class="ds-section__subtitle">We welcome all inquiries regarding admissions, syllabus, or general information.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div data-aos="fade-up" data-aos-delay="100" class="bg-white rounded-2xl shadow-lg p-8 text-center transform hover:-translate-y-2 hover:shadow-2xl transition duration-300">
-                    <div class="w-16 h-16 bg-brandYellow text-brandGold rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">1</div>
-                    <h3 class="text-2xl font-bold text-brandDark mb-4">Primary Level</h3>
-                    <p class="text-gray-600">Grades 1 to 5. Fundamental moral stories and basic principles.</p>
-                </div>
-
-                <!-- Card 2 -->
-                <div data-aos="fade-up" data-aos-delay="200" class="bg-white rounded-2xl shadow-lg p-8 text-center transform hover:-translate-y-2 hover:shadow-2xl transition duration-300">
-                    <div class="w-16 h-16 bg-brandYellow text-brandGold rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">2</div>
-                    <h3 class="text-2xl font-bold text-brandDark mb-4">Secondary Level</h3>
-                    <p class="text-gray-600">Grades 6 to 9. Deepening understanding and practical applications.</p>
-                </div>
-
-                <!-- Card 3 -->
-                <div data-aos="fade-up" data-aos-delay="300" class="bg-white rounded-2xl shadow-lg p-8 text-center transform hover:-translate-y-2 hover:shadow-2xl transition duration-300">
-                    <div class="w-16 h-16 bg-brandYellow text-brandGold rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">3</div>
-                    <h3 class="text-2xl font-bold text-brandDark mb-4">Advanced Level</h3>
-                    <p class="text-gray-600">Grades 10 & 11. Final examination preparation and leadership training.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= EVENT GALLERY SECTION ================= -->
-    <section id="gallery" class="py-20 bg-brandWhite">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-bold text-brandGold mb-4">Event Gallery</h2>
-                <div class="w-20 h-1 bg-brandGold mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                <div data-aos="zoom-in" data-aos-delay="50" class="overflow-hidden rounded-lg shadow-md cursor-pointer">
-                    <img src="https://via.placeholder.com/600x600/E5E7EB/9CA3AF?text=Event+Photo+1" alt="Event 1" class="w-full h-full object-cover transform hover:scale-110 transition duration-500">
-                </div>
-                <div data-aos="zoom-in" data-aos-delay="150" class="overflow-hidden rounded-lg shadow-md cursor-pointer">
-                    <img src="https://via.placeholder.com/600x600/E5E7EB/9CA3AF?text=Event+Photo+2" alt="Event 2" class="w-full h-full object-cover transform hover:scale-110 transition duration-500">
-                </div>
-                <div data-aos="zoom-in" data-aos-delay="250" class="overflow-hidden rounded-lg shadow-md cursor-pointer">
-                    <img src="https://via.placeholder.com/600x600/E5E7EB/9CA3AF?text=Event+Photo+3" alt="Event 3" class="w-full h-full object-cover transform hover:scale-110 transition duration-500">
-                </div>
-                <div data-aos="zoom-in" data-aos-delay="350" class="overflow-hidden rounded-lg shadow-md cursor-pointer">
-                    <img src="https://via.placeholder.com/600x600/E5E7EB/9CA3AF?text=Event+Photo+4" alt="Event 4" class="w-full h-full object-cover transform hover:scale-110 transition duration-500">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= CONTACT & LOCATION SECTION ================= -->
-    <section id="contact" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 bg-brandYellow rounded-3xl shadow-xl overflow-hidden">
-                
-                <!-- Form Column -->
-                <div data-aos="fade-right" class="p-8 md:p-12 bg-white">
-                    <h2 class="text-3xl font-bold text-brandGold mb-6">Get in Touch</h2>
-                    <form action="#" method="POST" class="space-y-6">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brandGold focus:border-transparent outline-none transition" placeholder="John Doe">
+            <div class="ds-contact">
+                <!-- Contact Info -->
+                <div class="ds-contact__info-box">
+                    <!-- [CUSTOMIZE]: Update all contact details below -->
+                    <div class="ds-contact__detail">
+                        <div class="ds-contact__icon">📍</div>
+                        <div class="ds-contact__text">
+                            <h4>Temple Location</h4>
+                            <p>Sri Jinanandha Temple Premises
+                            [Street Address]
+                            Polonnaruwa, Sri Lanka</p>
                         </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                            <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brandGold focus:border-transparent outline-none transition" placeholder="john@example.com">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
-                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brandGold focus:border-transparent outline-none transition" placeholder="How can we help you?"></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-brandGold text-white font-bold py-3 px-4 rounded-lg shadow hover:bg-yellow-600 transition transform hover:-translate-y-1 duration-300">
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-
-                <!-- Contact Details Column -->
-                <div data-aos="fade-left" class="p-8 md:p-12 flex flex-col justify-center">
-                    <h2 class="text-3xl font-bold text-brandDark mb-8">Contact Information</h2>
+                    </div>
                     
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 mt-1 text-brandGold">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                            </div>
-                            <div class="ml-4">
-                                <p class="text-lg font-medium text-brandDark">Email</p>
-                                <p class="text-gray-600">info@englishmediumdahamschool.lk</p>
-                            </div>
+                    <div class="ds-contact__detail">
+                        <div class="ds-contact__icon">📞</div>
+                        <div class="ds-contact__text">
+                            <h4>Contact Numbers</h4>
+                            <p>Office: +94 (0) 27 XXX XXXX
+                            Mobile: +94 (0) 7X XXX XXXX</p>
                         </div>
-
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 mt-1 text-brandGold">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                            </div>
-                            <div class="ml-4">
-                                <p class="text-lg font-medium text-brandDark">Phone</p>
-                                <p class="text-gray-600">+94 77 123 4567</p>
-                            </div>
+                    </div>
+                    
+                    <div class="ds-contact__detail">
+                        <div class="ds-contact__icon">📧</div>
+                        <div class="ds-contact__text">
+                            <h4>Email Address</h4>
+                            <p>info@srijinanandha-dhamma.lk</p>
                         </div>
-
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 mt-1 text-brandGold">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                            </div>
-                            <div class="ml-4">
-                                <p class="text-lg font-medium text-brandDark">Address</p>
-                                <p class="text-gray-600">Bodhimalu wiharaya, <br>Polonnaruwa Town, <br>Polonnaruwa, Sri Lanka.</p>
-                            </div>
+                    </div>
+                    
+                    <div class="ds-contact__detail">
+                        <div class="ds-contact__icon">⏰</div>
+                        <div class="ds-contact__text">
+                            <h4>School Hours</h4>
+                            <p>Sunday: 8:00 AM - 1:00 PM
+                            (Closed on regular weekdays)</p>
                         </div>
                     </div>
                 </div>
 
+                <!-- Contact Form -->
+                <form class="ds-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+                    <div class="ds-form__group">
+                        <label for="name" class="ds-form__label">Full Name *</label>
+                        <input type="text" id="name" class="ds-form__input" required placeholder="Enter your name">
+                    </div>
+                    
+                    <div class="ds-form__group">
+                        <label for="email" class="ds-form__label">Email Address *</label>
+                        <input type="email" id="email" class="ds-form__input" required placeholder="Enter your email">
+                    </div>
+                    
+                    <div class="ds-form__group">
+                        <label for="subject" class="ds-form__label">Subject</label>
+                        <input type="text" id="subject" class="ds-form__input" placeholder="What is this regarding?">
+                    </div>
+                    
+                    <div class="ds-form__group">
+                        <label for="message" class="ds-form__label">Message *</label>
+                        <textarea id="message" class="ds-form__textarea" required placeholder="Write your message here..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="ds-btn ds-btn--primary" style="width: 100%;">Send Message</button>
+                    
+                    <div class="ds-form__message" id="formMessage">
+                        Thank you for your message. We will get back to you soon. May the Noble Triple Gem bless you! 🙏
+                    </div>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- ================= FOOTER ================= -->
-    <footer class="bg-brandDark py-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-            <div class="mb-4 md:mb-0">
-                <p class="text-gray-300">&copy; 2026 Sri Jinanandha English Medium Daham School. All rights reserved.</p>
+    <!-- FOOTER -->
+    <footer class="ds-footer">
+        <div class="ds-container">
+            <div class="ds-footer__grid">
+                
+                <div class="ds-footer__brand">
+                    <h3>Sri Jinanandha Dhamma School</h3>
+                    <!-- [CUSTOMIZE]: Footer short bio -->
+                    <p>Dedicated to providing a strong spiritual foundation and teaching the profound teachings of the Buddha in the English medium, helping students build moral character.</p>
+                </div>
+                
+                <div>
+                    <h4 class="ds-footer__title">Quick Links</h4>
+                    <ul class="ds-footer__links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#mission">Core Values</a></li>
+                        <li><a href="#events">Spiritual Calendar</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="ds-footer__title">Connect With Us</h4>
+                    <!-- [CUSTOMIZE]: Update Social Links -->
+                    <div class="ds-footer__social">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="YouTube">▶️</a>
+                        <a href="#" aria-label="WhatsApp">💬</a>
+                    </div>
+                </div>
+
             </div>
-            <div>
-                <a href="https://www.facebook.com/englishmediumdahamschool" target="_blank" class="text-brandGold hover:text-white font-medium transition duration-300 flex items-center justify-center md:justify-start">
-                    <!-- Simple Facebook Icon SVG -->
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/></svg>
-                    Follow us on Facebook
-                </a>
+            
+            <div class="ds-footer__bottom">
+                <p>&copy; <span id="currentYear"></span> Sri Jinanandha English Medium Dhamma School. All rights reserved.</p>
+                <p style="margin-top: 8px; color: var(--col-gold);">"May the Noble Triple Gem bless you with wisdom, peace, and compassion." 🙏</p>
             </div>
         </div>
     </footer>
 
-    <!-- ================= SCRIPTS ================= -->
-    <!-- AOS Animation Setup -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Back to Top Button -->
+    <button class="ds-back-top" id="backTopBtn" onclick="scrollToTop()" aria-label="Back to top">↑</button>
+
     <script>
-        // Initialize Animate On Scroll
-        AOS.init({
-            once: true, // Animations happen only once while scrolling down
-            offset: 100, // Offset (in px) from the original trigger point
+        /* ==========================================================================
+           JAVASCRIPT INTERACTIVITY
+           ========================================================================== */
+
+        // 1. Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navList = document.getElementById('navList');
+        const navLinks = document.querySelectorAll('.ds-nav__link');
+
+        mobileToggle.addEventListener('click', () => {
+            navList.classList.toggle('ds-nav__list--open');
         });
 
-        // Mobile Menu Toggle Logic
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        const menuLinks = menu.querySelectorAll('a');
-
-        // Toggle menu visibility
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        // Close menu when a link is clicked (improves mobile UX)
-        menuLinks.forEach(link => {
+        // Close mobile menu when clicking a link
+        navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                menu.classList.add('hidden');
+                navList.classList.remove('ds-nav__list--open');
             });
         });
+
+        // 2. Sticky Header & Back to Top Button visibility on scroll
+        const header = document.getElementById('header');
+        const backTopBtn = document.getElementById('backTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('ds-header--scrolled');
+                backTopBtn.classList.add('ds-back-top--visible');
+            } else {
+                header.classList.remove('ds-header--scrolled');
+                backTopBtn.classList.remove('ds-back-top--visible');
+            }
+        });
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 3. Tab Switching Logic (Community Section)
+        function openTab(evt, tabId) {
+            // Hide all tab panes
+            const tabPanes = document.querySelectorAll('.ds-tabs__pane');
+            tabPanes.forEach(pane => {
+                pane.classList.remove('ds-tabs__pane--active');
+            });
+
+            // Remove active class from all buttons
+            const tabBtns = document.querySelectorAll('.ds-tabs__btn');
+            tabBtns.forEach(btn => {
+                btn.classList.remove('ds-tabs__btn--active');
+                btn.setAttribute('aria-selected', 'false');
+            });
+
+            // Show current tab and add active class to button
+            document.getElementById(tabId).classList.add('ds-tabs__pane--active');
+            evt.currentTarget.classList.add('ds-tabs__btn--active');
+            evt.currentTarget.setAttribute('aria-selected', 'true');
+        }
+
+        // 4. Scrollspy (Highlight active navigation link based on scroll position)
+        const sections = document.querySelectorAll('section[id]');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                // Offset calculation (header height + buffer)
+                const sectionTop = section.offsetTop - 100; 
+                
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('ds-nav__link--active');
+                if (link.getAttribute('href').includes(current) && current !== '') {
+                    link.classList.add('ds-nav__link--active');
+                }
+            });
+        });
+
+        // 5. Form Submission Handler (Prevents default refresh and shows message)
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Stop page reload
+            
+            // In a real scenario, you would send data to a backend here.
+            // For now, we just show the success message.
+            const messageBox = document.getElementById('formMessage');
+            messageBox.style.display = 'block';
+            
+            // Clear the form fields
+            document.getElementById('contactForm').reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                messageBox.style.display = 'none';
+            }, 5000);
+        }
+
+        // 6. Set current year in footer automatically
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
