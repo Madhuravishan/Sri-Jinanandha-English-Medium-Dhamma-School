@@ -6,45 +6,71 @@
     <!-- [CUSTOMIZE]: Update title and meta description for SEO -->
     <title>Sri Jinanandha English Medium Dhamma School</title>
     <meta name="description" content="Guiding the next generation in the Dhamma. Sri Jinanandha English Medium Dhamma School — nurturing wisdom, compassion and mindfulness since 1976.">
-    <meta name="theme-color" content="#12332B">
+    <meta name="theme-color" id="meta-theme-color" content="#12332B">
 
     <!-- Google Fonts for elegant, spiritual typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
 
+    <!-- Theme Initialization Script (Placed here to prevent FOUC - Flash of Unstyled Content) -->
+    <script>
+        const storedTheme = localStorage.getItem('ds-theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.getElementById('meta-theme-color')?.setAttribute('content', '#0C1210');
+        }
+    </script>
+
     <style>
         /* ==========================================================================
-           DESIGN TOKENS — Sri Jinanandha Dhamma School
-           Palette: temple gold, deep robe maroon, ivory parchment, deep bodhi-leaf teal
+           DESIGN TOKENS & THEME SYSTEM — Sri Jinanandha Dhamma School
            ========================================================================== */
 
         :root {
-            /* Color Palette — refined, sacred, warm */
-            --col-teal:            #12332B;   /* deep bodhi-leaf / temple shadow */
-            --col-teal-deeper:     #0B241D;
-            --col-maroon:          #7A2B1E;   /* saffron-robe maroon */
-            --col-maroon-deep:     #5C1F16;
-            --col-gold:            #C08829;   /* temple gold */
-            --col-gold-light:      #E3B95C;
-            --col-gold-pale:       #F2DFAE;
-            --col-ivory:           #FBF6EA;   /* warm parchment background */
-            --col-ivory-deep:      #F3ECDA;
-            --col-white:           #FFFFFF;
-            --col-text-main:       #2B2620;
-            --col-text-muted:      #6E6455;
-            --col-border:          #E7DDC6;
-
             /* Typography */
             --font-display: 'Fraunces', serif;
             --font-body: 'Inter', sans-serif;
             --font-accent: 'Cormorant Garamond', serif;
 
-            /* Shadows & Radii */
-            --shadow-sm: 0 4px 14px rgba(43, 38, 32, 0.06);
-            --shadow-md: 0 14px 34px rgba(43, 38, 32, 0.10);
-            --shadow-lg: 0 26px 60px rgba(18, 51, 43, 0.16);
-            --shadow-gold: 0 8px 30px rgba(192, 136, 41, 0.25);
+            /* Base Palette (Light Theme Defaults) */
+            --bg-body: #FBF6EA; /* Ivory */
+            --bg-body-rgb: 251, 246, 234;
+            --bg-alt: #F3ECDA; /* Deep Ivory */
+            --bg-card: #FFFFFF;
+            --bg-card-rgb: 255, 255, 255;
+            
+            --bg-precepts-start: #12332B;
+            --bg-precepts-end: #0B241D;
+            --bg-footer-start: #12332B;
+            --bg-footer-end: #0B241D;
+            
+            --bg-icon: #F2DFAE;
+            --bg-icon-contact: #FFFFFF;
+
+            --text-main: #2B2620;
+            --text-muted: #6E6455;
+            --text-heading: #12332B;
+            --text-on-dark: rgba(251, 246, 234, 0.92);
+
+            --border-color: #E7DDC6;
+
+            --accent-gold: #C08829;
+            --accent-gold-rgb: 192, 136, 41;
+            --accent-gold-light: #E3B95C;
+            --accent-maroon: #7A2B1E;
+            --accent-maroon-deep: #5C1F16;
+
+            --shadow-color-rgb: 43, 38, 32;
+            --shadow-gold-rgb: 192, 136, 41;
+            --shadow-teal-rgb: 18, 51, 43;
+
+            --form-bg: #FBF6EA;
+            --form-msg-bg: #E9F3EA;
+            --form-msg-text: #234A2A;
+
+            /* Radii */
             --radius-md: 14px;
             --radius-lg: 28px;
             --radius-full: 9999px;
@@ -55,22 +81,75 @@
             --trans-slow: 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
+        /* DARK THEME OVERRIDES */
+        [data-theme="dark"] {
+            --bg-body: #0D1513; /* Deep dark bodhi-leaf black */
+            --bg-body-rgb: 13, 21, 19;
+            --bg-alt: #131E1B;
+            --bg-card: #172420;
+            --bg-card-rgb: 23, 36, 32;
+            
+            --bg-precepts-start: #111C19;
+            --bg-precepts-end: #070D0B;
+            --bg-footer-start: #0B1311;
+            --bg-footer-end: #050908;
+            
+            --bg-icon: #21332D;
+            --bg-icon-contact: #1B2B26;
+
+            --text-main: #E2DBD0;
+            --text-muted: #9E988E;
+            --text-heading: #E8D5B5;
+            --text-on-dark: #E2DBD0;
+
+            --border-color: #273D36;
+
+            --accent-gold: #D6A451;
+            --accent-gold-rgb: 214, 164, 81;
+            --accent-gold-light: #F2DFAE;
+            --accent-maroon: #D16A5A;
+            --accent-maroon-deep: #A34A3C;
+
+            --shadow-color-rgb: 0, 0, 0;
+            --shadow-gold-rgb: 214, 164, 81;
+            --shadow-teal-rgb: 0, 0, 0;
+
+            --form-bg: #111C19;
+            --form-msg-bg: #173021;
+            --form-msg-text: #86C998;
+        }
+
+        /* Dynamic Shadows */
+        :root {
+            --shadow-sm: 0 4px 14px rgba(var(--shadow-color-rgb), 0.06);
+            --shadow-md: 0 14px 34px rgba(var(--shadow-color-rgb), 0.10);
+            --shadow-lg: 0 26px 60px rgba(var(--shadow-teal-rgb), 0.16);
+            --shadow-gold: 0 8px 30px rgba(var(--shadow-gold-rgb), 0.25);
+        }
+
+        /* Global Theme Transition Class */
+        .theme-transition,
+        .theme-transition *,
+        .theme-transition *::before,
+        .theme-transition *::after {
+            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, fill 0.4s ease, stroke 0.4s ease !important;
+        }
+
         /* Reset & Base */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
 
         body {
             font-family: var(--font-body);
-            color: var(--col-text-main);
-            background-color: var(--col-ivory);
+            color: var(--text-main);
+            background-color: var(--bg-body);
             line-height: 1.65;
             overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-family: var(--font-display);
-            color: var(--col-teal);
+            color: var(--text-heading);
             line-height: 1.25;
             font-weight: 500;
         }
@@ -80,7 +159,7 @@
         ul { list-style: none; }
         button { font-family: inherit; }
 
-        ::selection { background: var(--col-gold-pale); color: var(--col-maroon-deep); }
+        ::selection { background: var(--bg-icon); color: var(--accent-maroon-deep); }
 
         /* Respect reduced motion preference */
         @media (prefers-reduced-motion: reduce) {
@@ -108,7 +187,7 @@
         }
 
         .ds-section--alternate {
-            background-color: var(--col-white);
+            background-color: var(--bg-card);
         }
 
         .ds-section__header {
@@ -125,27 +204,27 @@
             font-style: italic;
             font-size: 1.05rem;
             letter-spacing: 0.04em;
-            color: var(--col-gold);
+            color: var(--accent-gold);
             margin-bottom: 14px;
         }
 
         .ds-eyebrow__line {
             width: 28px;
             height: 1px;
-            background: var(--col-gold);
+            background: var(--accent-gold);
             display: inline-block;
         }
 
         .ds-section__title {
             font-size: clamp(2.1rem, 4vw, 2.75rem);
             margin-bottom: 18px;
-            color: var(--col-maroon);
+            color: var(--accent-maroon);
             font-weight: 500;
         }
 
         .ds-section__subtitle {
             font-size: 1.125rem;
-            color: var(--col-text-muted);
+            color: var(--text-muted);
             max-width: 620px;
             margin: 0 auto;
         }
@@ -191,7 +270,7 @@
             top: 0; left: 0;
             height: 3px;
             width: 0%;
-            background: linear-gradient(90deg, var(--col-gold), var(--col-gold-light));
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-light));
             z-index: 1200;
             transition: width 0.1s linear;
         }
@@ -217,7 +296,7 @@
         .ds-btn__ripple {
             position: absolute;
             border-radius: 50%;
-            background: rgba(255,255,255,0.55);
+            background: rgba(255,255,255,0.4);
             transform: scale(0);
             animation: ds-ripple 0.65s ease-out forwards;
             pointer-events: none;
@@ -228,13 +307,13 @@
         }
 
         .ds-btn--primary {
-            background: linear-gradient(135deg, var(--col-maroon), var(--col-maroon-deep));
-            color: var(--col-white);
+            background: linear-gradient(135deg, var(--accent-maroon), var(--accent-maroon-deep));
+            color: #FFFFFF;
             box-shadow: var(--shadow-sm);
         }
 
         .ds-btn--primary:hover, .ds-btn--primary:focus-visible {
-            background: linear-gradient(135deg, var(--col-teal), var(--col-teal-deeper));
+            background: linear-gradient(135deg, var(--bg-precepts-start), var(--bg-precepts-end));
             transform: translateY(-3px);
             box-shadow: var(--shadow-md);
             outline: none;
@@ -242,19 +321,19 @@
 
         .ds-btn--outline {
             background-color: transparent;
-            color: var(--col-maroon);
-            border: 1.5px solid var(--col-maroon);
+            color: var(--accent-maroon);
+            border: 1.5px solid var(--accent-maroon);
         }
 
         .ds-btn--outline:hover, .ds-btn--outline:focus-visible {
-            background-color: var(--col-maroon);
-            color: var(--col-white);
+            background-color: var(--accent-maroon);
+            color: #FFFFFF;
             transform: translateY(-3px);
             outline: none;
         }
 
         a.ds-btn:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, .ds-nav__link:focus-visible {
-            outline: 2px solid var(--col-gold);
+            outline: 2px solid var(--accent-gold);
             outline-offset: 3px;
         }
 
@@ -262,16 +341,16 @@
         .ds-header {
             position: fixed;
             top: 0; left: 0; width: 100%;
-            background-color: rgba(251, 246, 234, 0.88);
+            background-color: rgba(var(--bg-body-rgb), 0.88);
             backdrop-filter: blur(14px) saturate(140%);
-            border-bottom: 1px solid rgba(192,136,41,0.18);
+            border-bottom: 1px solid rgba(var(--accent-gold-rgb), 0.18);
             z-index: 1000;
             transition: all var(--trans-fast);
         }
 
         .ds-header--scrolled {
             box-shadow: var(--shadow-sm);
-            background-color: rgba(251, 246, 234, 0.97);
+            background-color: rgba(var(--bg-body-rgb), 0.97);
         }
 
         .ds-header__inner {
@@ -288,29 +367,35 @@
             font-family: var(--font-display);
             font-weight: 600;
             font-size: 1.2rem;
-            color: var(--col-maroon);
+            color: var(--accent-maroon);
         }
 
         .ds-header__logo-placeholder {
             width: 44px;
             height: 44px;
-            background: linear-gradient(135deg, var(--col-gold), var(--col-gold-light));
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-light));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--col-teal-deeper);
+            color: #0B241D; /* Always dark for contrast against gold */
             box-shadow: var(--shadow-gold);
             position: relative;
         }
         .ds-header__logo-placeholder .ds-icon { width: 22px; height: 22px; stroke-width: 1.4; }
+
+        .ds-header__actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
 
         .ds-nav__list { display: flex; gap: 30px; }
 
         .ds-nav__link {
             font-weight: 500;
             font-size: 0.96rem;
-            color: var(--col-teal);
+            color: var(--text-heading);
             transition: color var(--trans-fast);
             position: relative;
             letter-spacing: 0.01em;
@@ -321,24 +406,60 @@
             position: absolute;
             width: 0; height: 2px;
             bottom: -6px; left: 0;
-            background-color: var(--col-gold);
+            background-color: var(--accent-gold);
             transition: width var(--trans-fast);
         }
 
         .ds-nav__link:hover::after, .ds-nav__link--active::after { width: 100%; }
-        .ds-nav__link:hover, .ds-nav__link--active { color: var(--col-maroon); }
+        .ds-nav__link:hover, .ds-nav__link--active { color: var(--accent-maroon); }
+
+        /* Theme Toggle Button */
+        .ds-theme-toggle {
+            background: transparent;
+            border: none;
+            color: var(--text-heading);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            transition: background var(--trans-fast), color var(--trans-fast);
+        }
+
+        .ds-theme-toggle:hover, .ds-theme-toggle:focus-visible {
+            background: rgba(var(--accent-gold-rgb), 0.15);
+            color: var(--accent-maroon);
+        }
+
+        .ds-theme-toggle .ds-icon {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.5s ease;
+        }
+
+        /* Light Mode Icon State */
+        .ds-theme-toggle .ds-icon-sun { transform: translateY(30px) rotate(45deg); opacity: 0; }
+        .ds-theme-toggle .ds-icon-moon { transform: translateY(0) rotate(0); opacity: 1; }
+
+        /* Dark Mode Icon State */
+        [data-theme="dark"] .ds-theme-toggle .ds-icon-sun { transform: translateY(0) rotate(0); opacity: 1; }
+        [data-theme="dark"] .ds-theme-toggle .ds-icon-moon { transform: translateY(-30px) rotate(-45deg); opacity: 0; }
 
         .ds-header__mobile-toggle {
             display: none;
             background: none; border: none;
-            color: var(--col-teal);
             cursor: pointer;
             width: 32px; height: 24px;
             position: relative;
         }
         .ds-header__mobile-toggle span {
             position: absolute; left: 0; width: 100%; height: 2px;
-            background: var(--col-teal); border-radius: 2px;
+            background: var(--text-heading); border-radius: 2px;
             transition: var(--trans-smooth);
         }
         .ds-header__mobile-toggle span:nth-child(1) { top: 0; }
@@ -355,8 +476,8 @@
             padding-top: 190px;
             padding-bottom: 150px;
             background:
-                radial-gradient(ellipse 60% 50% at 50% 0%, rgba(192,136,41,0.16) 0%, rgba(251,246,234,0) 60%),
-                linear-gradient(180deg, var(--col-ivory) 0%, var(--col-ivory-deep) 100%);
+                radial-gradient(ellipse 60% 50% at 50% 0%, rgba(var(--accent-gold-rgb), 0.16) 0%, rgba(var(--bg-body-rgb), 0) 60%),
+                linear-gradient(180deg, var(--bg-body) 0%, var(--bg-alt) 100%);
             position: relative;
             overflow: hidden;
             text-align: center;
@@ -369,10 +490,10 @@
             width: 1400px; height: 1400px;
             transform: translateX(-50%);
             background: conic-gradient(from 0deg,
-                transparent 0deg, rgba(230,190,100,0.09) 3deg, transparent 9deg,
-                transparent 20deg, rgba(230,190,100,0.07) 23deg, transparent 30deg,
-                transparent 45deg, rgba(230,190,100,0.09) 48deg, transparent 55deg,
-                transparent 70deg, rgba(230,190,100,0.06) 74deg, transparent 80deg);
+                transparent 0deg, rgba(var(--accent-gold-rgb), 0.09) 3deg, transparent 9deg,
+                transparent 20deg, rgba(var(--accent-gold-rgb), 0.07) 23deg, transparent 30deg,
+                transparent 45deg, rgba(var(--accent-gold-rgb), 0.09) 48deg, transparent 55deg,
+                transparent 70deg, rgba(var(--accent-gold-rgb), 0.06) 74deg, transparent 80deg);
             animation: ds-rays-spin 90s linear infinite;
             pointer-events: none;
         }
@@ -385,6 +506,7 @@
             transform: translateX(-50%);
             width: 780px; height: 780px;
             opacity: 0.05;
+            color: var(--accent-maroon);
             animation: ds-mandala-spin 160s linear infinite;
             pointer-events: none;
         }
@@ -396,7 +518,7 @@
             position: absolute;
             width: var(--size, 5px); height: var(--size, 5px);
             border-radius: 50%;
-            background: radial-gradient(circle, var(--col-gold-light), transparent 70%);
+            background: radial-gradient(circle, var(--accent-gold-light), transparent 70%);
             opacity: 0;
             animation: ds-float-up var(--dur, 14s) ease-in var(--delay, 0s) infinite;
             bottom: -20px;
@@ -416,14 +538,14 @@
             width: 92px; height: 92px;
             margin: 0 auto 20px auto;
             position: relative;
-            color: var(--col-gold);
+            color: var(--accent-gold);
             animation: ds-breathe 4.5s ease-in-out infinite;
         }
         .ds-hero__lotus-glow .ds-icon { width: 100%; height: 100%; stroke-width: 1.1; }
         .ds-hero__lotus-glow::after {
             content: '';
             position: absolute; inset: -30%;
-            background: radial-gradient(circle, rgba(192,136,41,0.35), transparent 70%);
+            background: radial-gradient(circle, rgba(var(--accent-gold-rgb), 0.35), transparent 70%);
             border-radius: 50%;
             z-index: -1;
             animation: ds-glow-pulse 4.5s ease-in-out infinite;
@@ -435,15 +557,15 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background-color: rgba(192, 136, 41, 0.12);
-            color: var(--col-maroon);
+            background-color: rgba(var(--accent-gold-rgb), 0.12);
+            color: var(--accent-maroon);
             padding: 9px 20px;
             border-radius: var(--radius-full);
             font-weight: 600;
             font-size: 0.85rem;
             letter-spacing: 0.03em;
             margin-bottom: 28px;
-            border: 1px solid rgba(192, 136, 41, 0.35);
+            border: 1px solid rgba(var(--accent-gold-rgb), 0.35);
             opacity: 0;
             animation: ds-fade-up 1s cubic-bezier(0.16,1,0.3,1) 0.15s forwards;
         }
@@ -451,7 +573,7 @@
 
         .ds-hero__title {
             font-size: clamp(2.4rem, 5.4vw, 4.4rem);
-            color: var(--col-teal);
+            color: var(--text-heading);
             margin-bottom: 26px;
             max-width: 920px;
             margin-left: auto; margin-right: auto;
@@ -469,14 +591,14 @@
         }
         .ds-hero__title em {
             font-style: italic;
-            color: var(--col-maroon);
+            color: var(--accent-maroon);
             font-family: var(--font-accent);
             font-weight: 500;
         }
 
         .ds-hero__tagline {
             font-size: 1.2rem;
-            color: var(--col-text-muted);
+            color: var(--text-muted);
             max-width: 680px;
             margin: 0 auto 44px auto;
             opacity: 0;
@@ -499,10 +621,9 @@
             position: relative;
             line-height: 0;
             width: 100%;
-            color: var(--col-white);
+            color: var(--bg-card);
             margin-top: -2px;
         }
-        .ds-divider--to-ivory { color: var(--col-ivory); }
         .ds-divider svg { width: 100%; height: 70px; display: block; }
 
         /* ==========================================================================
@@ -518,7 +639,7 @@
         .ds-about__content p {
             margin-bottom: 18px;
             font-size: 1.1rem;
-            color: var(--col-text-main);
+            color: var(--text-main);
         }
         .ds-about__content p:first-of-type::first-letter {
             font-family: var(--font-display);
@@ -526,7 +647,7 @@
             float: left;
             line-height: 0.8;
             padding: 6px 10px 0 0;
-            color: var(--col-maroon);
+            color: var(--accent-maroon);
         }
 
         .ds-stats {
@@ -536,13 +657,13 @@
         }
 
         .ds-stat-card {
-            background: var(--col-white);
+            background: var(--bg-card);
             padding: 34px 22px;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
             text-align: center;
             transition: transform var(--trans-smooth), box-shadow var(--trans-smooth);
-            border: 1px solid var(--col-border);
+            border: 1px solid var(--border-color);
             perspective: 800px;
         }
 
@@ -554,9 +675,9 @@
         .ds-stat-card__icon {
             width: 46px; height: 46px;
             margin: 0 auto 16px auto;
-            color: var(--col-gold);
+            color: var(--accent-gold);
             display: flex; align-items: center; justify-content: center;
-            background: var(--col-gold-pale);
+            background: var(--bg-icon);
             border-radius: 50%;
         }
         .ds-stat-card__icon .ds-icon { width: 22px; height: 22px; }
@@ -565,13 +686,13 @@
             font-family: var(--font-display);
             font-size: 2.1rem;
             font-weight: 600;
-            color: var(--col-maroon);
+            color: var(--accent-maroon);
             margin-bottom: 4px;
         }
 
         .ds-stat-card__label {
             font-weight: 500;
-            color: var(--col-text-muted);
+            color: var(--text-muted);
             font-size: 0.92rem;
         }
 
@@ -584,7 +705,7 @@
         }
 
         .ds-value-card {
-            background: var(--col-white);
+            background: var(--bg-card);
             padding: 36px 26px;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
@@ -596,16 +717,16 @@
         .ds-value-card:hover {
             box-shadow: var(--shadow-lg);
             transform: translateY(-8px);
-            border-color: rgba(192,136,41,0.25);
+            border-color: rgba(var(--accent-gold-rgb), 0.25);
         }
 
         .ds-value-card__icon {
             width: 68px; height: 68px;
-            background: linear-gradient(135deg, var(--col-gold-pale), var(--col-ivory-deep));
+            background: linear-gradient(135deg, var(--bg-icon), var(--bg-alt));
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             margin: 0 auto 24px auto;
-            color: var(--col-maroon);
+            color: var(--accent-maroon);
             transition: transform var(--trans-smooth);
         }
         .ds-value-card:hover .ds-value-card__icon { transform: rotate(8deg) scale(1.06); }
@@ -614,17 +735,17 @@
         .ds-value-card__title {
             font-size: 1.2rem;
             margin-bottom: 12px;
-            color: var(--col-teal);
+            color: var(--text-heading);
         }
 
         .ds-value-card__desc {
             font-size: 0.94rem;
-            color: var(--col-text-muted);
+            color: var(--text-muted);
         }
 
         /* Precepts List */
         .ds-precepts {
-            background: linear-gradient(160deg, var(--col-teal) 0%, var(--col-teal-deeper) 100%);
+            background: linear-gradient(160deg, var(--bg-precepts-start) 0%, var(--bg-precepts-end) 100%);
             border-radius: var(--radius-lg);
             padding: 56px;
             max-width: 820px;
@@ -636,14 +757,14 @@
             content: '';
             position: absolute; top: -60px; right: -60px;
             width: 220px; height: 220px;
-            background: radial-gradient(circle, rgba(192,136,41,0.25), transparent 70%);
+            background: radial-gradient(circle, rgba(var(--accent-gold-rgb), 0.25), transparent 70%);
             border-radius: 50%;
         }
 
         .ds-precepts__title {
             text-align: center;
             margin-bottom: 36px;
-            color: var(--col-gold-light);
+            color: var(--accent-gold-light);
             position: relative;
         }
 
@@ -654,7 +775,7 @@
             padding-left: 52px;
             margin-bottom: 26px;
             font-size: 1.08rem;
-            color: rgba(251,246,234,0.92);
+            color: var(--text-on-dark);
         }
         .ds-precepts__item:last-child { margin-bottom: 0; }
 
@@ -663,8 +784,8 @@
             content: counter(precept-counter);
             position: absolute; left: 0; top: -3px;
             width: 34px; height: 34px;
-            background: linear-gradient(135deg, var(--col-gold), var(--col-gold-light));
-            color: var(--col-teal-deeper);
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-light));
+            color: #0B241D;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             font-weight: 700;
@@ -687,18 +808,18 @@
             padding: 13px 34px;
             font-size: 1.05rem;
             font-weight: 600;
-            color: var(--col-text-muted);
+            color: var(--text-muted);
             cursor: pointer;
             border-bottom: 3px solid transparent;
             transition: all var(--trans-fast);
             font-family: var(--font-display);
         }
 
-        .ds-tabs__btn:hover { color: var(--col-maroon); }
+        .ds-tabs__btn:hover { color: var(--accent-maroon); }
 
         .ds-tabs__btn--active {
-            color: var(--col-maroon);
-            border-bottom-color: var(--col-gold);
+            color: var(--accent-maroon);
+            border-bottom-color: var(--accent-gold);
         }
 
         .ds-tabs__pane { display: none; }
@@ -717,12 +838,12 @@
         }
 
         .ds-profile-card {
-            background: var(--col-ivory);
+            background: var(--bg-body);
             border-radius: var(--radius-md);
             padding: 36px 28px;
             text-align: center;
             transition: transform var(--trans-smooth), box-shadow var(--trans-smooth);
-            border: 1px solid var(--col-border);
+            border: 1px solid var(--border-color);
         }
 
         .ds-profile-card:hover {
@@ -733,31 +854,31 @@
         .ds-profile-card__avatar {
             width: 100px; height: 100px;
             border-radius: 50%;
-            background: var(--col-white);
+            background: var(--bg-card);
             box-shadow: var(--shadow-sm);
             margin: 0 auto 24px auto;
             display: flex; align-items: center; justify-content: center;
-            color: var(--col-maroon);
-            border: 2px solid var(--col-gold-light);
+            color: var(--accent-maroon);
+            border: 2px solid var(--accent-gold-light);
         }
         .ds-profile-card__avatar .ds-icon { width: 40px; height: 40px; stroke-width: 1.3; }
 
         .ds-profile-card__name {
             font-size: 1.22rem;
-            color: var(--col-teal);
+            color: var(--text-heading);
             margin-bottom: 4px;
         }
 
         .ds-profile-card__role {
             font-size: 0.85rem;
-            color: var(--col-maroon);
+            color: var(--accent-maroon);
             font-weight: 600;
             margin-bottom: 16px;
             text-transform: uppercase;
             letter-spacing: 0.06em;
         }
 
-        .ds-profile-card__bio { font-size: 0.94rem; color: var(--col-text-muted); }
+        .ds-profile-card__bio { font-size: 0.94rem; color: var(--text-muted); }
 
         /* Events Timeline */
         .ds-timeline { position: relative; max-width: 820px; margin: 0 auto; }
@@ -766,7 +887,7 @@
             content: '';
             position: absolute;
             width: 2px;
-            background: repeating-linear-gradient(180deg, var(--col-gold-light) 0 8px, transparent 8px 16px);
+            background: repeating-linear-gradient(180deg, var(--accent-gold-light) 0 8px, transparent 8px 16px);
             top: 0; bottom: 0; left: 50%;
             margin-left: -1px;
         }
@@ -784,13 +905,13 @@
             position: absolute;
             width: 44px; height: 44px;
             right: -22px;
-            background: var(--col-white);
-            border: 3px solid var(--col-maroon);
+            background: var(--bg-card);
+            border: 3px solid var(--accent-maroon);
             top: 26px;
             border-radius: 50%;
             z-index: 1;
             display: flex; align-items: center; justify-content: center;
-            color: var(--col-maroon);
+            color: var(--accent-maroon);
             box-shadow: var(--shadow-sm);
         }
         .ds-timeline__marker .ds-icon { width: 18px; height: 18px; }
@@ -798,21 +919,21 @@
 
         .ds-timeline__content {
             padding: 26px;
-            background-color: var(--col-white);
+            background-color: var(--bg-card);
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-sm);
-            border: 1px solid var(--col-border);
+            border: 1px solid var(--border-color);
             transition: transform var(--trans-fast), box-shadow var(--trans-fast);
         }
 
         .ds-timeline__content:hover {
             transform: scale(1.02);
             box-shadow: var(--shadow-md);
-            border-color: rgba(192,136,41,0.3);
+            border-color: rgba(var(--accent-gold-rgb), 0.3);
         }
 
         .ds-timeline__date {
-            color: var(--col-maroon);
+            color: var(--accent-maroon);
             font-weight: 600;
             font-size: 0.85rem;
             margin-bottom: 8px;
@@ -820,17 +941,17 @@
             letter-spacing: 0.03em;
         }
 
-        .ds-timeline__title { font-size: 1.22rem; margin-bottom: 8px; }
-        .ds-timeline__content p { color: var(--col-text-muted); font-size: 0.96rem; }
+        .ds-timeline__title { font-size: 1.22rem; margin-bottom: 8px; color: var(--text-heading); }
+        .ds-timeline__content p { color: var(--text-muted); font-size: 0.96rem; }
 
         /* Contact Section */
         .ds-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
 
         .ds-contact__info-box {
-            background: linear-gradient(160deg, var(--col-ivory-deep), var(--col-ivory));
+            background: linear-gradient(160deg, var(--bg-alt), var(--bg-body));
             padding: 44px;
             border-radius: var(--radius-lg);
-            border: 1px solid var(--col-border);
+            border: 1px solid var(--border-color);
         }
 
         .ds-contact__detail { display: flex; gap: 18px; margin-bottom: 32px; }
@@ -840,49 +961,49 @@
             width: 46px; height: 46px;
             flex-shrink: 0;
             border-radius: 50%;
-            background: var(--col-white);
-            color: var(--col-maroon);
+            background: var(--bg-icon-contact);
+            color: var(--accent-maroon);
             display: flex; align-items: center; justify-content: center;
             box-shadow: var(--shadow-sm);
         }
         .ds-contact__icon .ds-icon { width: 20px; height: 20px; }
 
-        .ds-contact__text h4 { font-size: 1.1rem; margin-bottom: 4px; }
-        .ds-contact__text p { color: var(--col-text-muted); white-space: pre-line; font-size: 0.96rem; }
+        .ds-contact__text h4 { font-size: 1.1rem; margin-bottom: 4px; color: var(--text-heading); }
+        .ds-contact__text p { color: var(--text-muted); white-space: pre-line; font-size: 0.96rem; }
 
         .ds-form {
-            background: var(--col-white);
+            background: var(--bg-card);
             padding: 44px;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
-            border: 1px solid var(--col-border);
+            border: 1px solid var(--border-color);
         }
 
         .ds-form__group { margin-bottom: 24px; position: relative; }
 
         .ds-form__label {
             display: block; margin-bottom: 8px;
-            font-weight: 500; color: var(--col-teal);
+            font-weight: 500; color: var(--text-heading);
             font-size: 0.94rem;
         }
 
         .ds-form__input, .ds-form__textarea {
             width: 100%;
             padding: 15px 17px;
-            border: 1.5px solid var(--col-border);
+            border: 1.5px solid var(--border-color);
             border-radius: var(--radius-md);
             font-family: var(--font-body);
             font-size: 1rem;
             transition: border-color var(--trans-fast), box-shadow var(--trans-fast);
-            background-color: var(--col-ivory);
-            color: var(--col-text-main);
+            background-color: var(--form-bg);
+            color: var(--text-main);
         }
 
         .ds-form__input:focus, .ds-form__textarea:focus {
             outline: none;
-            border-color: var(--col-gold);
-            background-color: var(--col-white);
-            box-shadow: 0 0 0 4px rgba(192,136,41,0.14);
+            border-color: var(--accent-gold);
+            background-color: var(--bg-card);
+            box-shadow: 0 0 0 4px rgba(var(--accent-gold-rgb), 0.14);
         }
 
         .ds-form__textarea { min-height: 150px; resize: vertical; }
@@ -892,8 +1013,8 @@
             align-items: center;
             gap: 10px;
             padding: 16px 18px;
-            background-color: #E9F3EA;
-            color: #234A2A;
+            background-color: var(--form-msg-bg);
+            color: var(--form-msg-text);
             border-radius: var(--radius-md);
             margin-top: 16px;
             font-size: 0.95rem;
@@ -901,8 +1022,8 @@
 
         /* Footer */
         .ds-footer {
-            background: linear-gradient(180deg, var(--col-teal) 0%, var(--col-teal-deeper) 100%);
-            color: var(--col-white);
+            background: linear-gradient(180deg, var(--bg-footer-start) 0%, var(--bg-footer-end) 100%);
+            color: var(--text-on-dark);
             padding: 90px 0 28px 0;
             position: relative;
             overflow: hidden;
@@ -912,6 +1033,7 @@
             top: -120px; right: -120px;
             width: 340px; height: 340px;
             opacity: 0.06;
+            color: #FFFFFF;
             animation: ds-mandala-spin 200s linear infinite;
         }
 
@@ -928,18 +1050,18 @@
             width: 44px; height: 44px;
             flex-shrink: 0;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--col-gold), var(--col-gold-light));
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-light));
             display: flex; align-items: center; justify-content: center;
-            color: var(--col-teal-deeper);
+            color: #0B241D;
         }
         .ds-footer__brand-icon .ds-icon { width: 22px; height: 22px; }
-        .ds-footer__brand h3 { color: var(--col-white); margin-bottom: 14px; }
-        .ds-footer__brand p { color: rgba(255,255,255,0.68); max-width: 400px; font-size: 0.96rem; }
+        .ds-footer__brand h3 { color: var(--text-on-dark); margin-bottom: 14px; }
+        .ds-footer__brand p { color: var(--text-on-dark); opacity: 0.68; max-width: 400px; font-size: 0.96rem; }
 
-        .ds-footer__title { color: var(--col-gold-light); font-size: 1.05rem; margin-bottom: 24px; }
+        .ds-footer__title { color: var(--accent-gold-light); font-size: 1.05rem; margin-bottom: 24px; }
         .ds-footer__links li { margin-bottom: 13px; }
-        .ds-footer__links a { color: rgba(255,255,255,0.68); transition: color var(--trans-fast), padding-left var(--trans-fast); font-size: 0.95rem; }
-        .ds-footer__links a:hover { color: var(--col-white); padding-left: 4px; }
+        .ds-footer__links a { color: var(--text-on-dark); opacity: 0.68; transition: color var(--trans-fast), padding-left var(--trans-fast), opacity var(--trans-fast); font-size: 0.95rem; }
+        .ds-footer__links a:hover { color: #FFFFFF; opacity: 1; padding-left: 4px; }
 
         .ds-footer__social { display: flex; gap: 14px; }
         .ds-footer__social a {
@@ -948,16 +1070,17 @@
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             transition: background-color var(--trans-fast), transform var(--trans-fast);
-            color: var(--col-white);
+            color: #FFFFFF;
         }
         .ds-footer__social a .ds-icon { width: 18px; height: 18px; }
-        .ds-footer__social a:hover { background-color: var(--col-gold); transform: translateY(-3px); }
+        .ds-footer__social a:hover { background-color: var(--accent-gold); transform: translateY(-3px); }
 
         .ds-footer__bottom {
             text-align: center;
             padding-top: 32px;
             border-top: 1px solid rgba(255,255,255,0.12);
-            color: rgba(255,255,255,0.5);
+            color: var(--text-on-dark);
+            opacity: 0.5;
             font-size: 0.875rem;
             position: relative;
         }
@@ -967,7 +1090,7 @@
             position: fixed;
             bottom: 32px; right: 32px;
             width: 50px; height: 50px;
-            background: linear-gradient(135deg, var(--col-maroon), var(--col-maroon-deep));
+            background: linear-gradient(135deg, var(--accent-maroon), var(--accent-maroon-deep));
             color: white;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
@@ -979,19 +1102,19 @@
             z-index: 99;
         }
         .ds-back-top .ds-icon { width: 20px; height: 20px; }
-        .ds-back-top:hover { background: linear-gradient(135deg, var(--col-gold), var(--col-gold-light)); transform: translateY(-4px); }
+        .ds-back-top:hover { background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-light)); transform: translateY(-4px); }
         .ds-back-top--visible { opacity: 1; visibility: visible; }
 
         /* Loading overlay */
         .ds-loader {
             position: fixed; inset: 0;
-            background: var(--col-ivory);
+            background: var(--bg-body);
             z-index: 2000;
             display: flex; align-items: center; justify-content: center;
             transition: opacity 0.6s ease, visibility 0.6s ease;
         }
         .ds-loader--hidden { opacity: 0; visibility: hidden; }
-        .ds-loader__lotus { width: 64px; height: 64px; color: var(--col-gold); animation: ds-breathe 1.6s ease-in-out infinite; }
+        .ds-loader__lotus { width: 64px; height: 64px; color: var(--accent-gold); animation: ds-breathe 1.6s ease-in-out infinite; }
         .ds-loader__lotus .ds-icon { width: 100%; height: 100%; }
 
         /* Responsive Design */
@@ -1006,11 +1129,12 @@
         }
 
         @media screen and (max-width: 768px) {
+            .ds-header__actions { gap: 16px; }
             .ds-header__mobile-toggle { display: block; }
             .ds-nav__list {
                 position: absolute;
                 top: 84px; left: 0; width: 100%;
-                background-color: var(--col-ivory);
+                background-color: var(--bg-body);
                 flex-direction: column;
                 gap: 0;
                 box-shadow: var(--shadow-md);
@@ -1018,7 +1142,7 @@
                 transition: clip-path var(--trans-smooth);
             }
             .ds-nav__list--open { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
-            .ds-nav__link { display: block; padding: 20px 24px; border-bottom: 1px solid var(--col-border); }
+            .ds-nav__link { display: block; padding: 20px 24px; border-bottom: 1px solid var(--border-color); }
             .ds-nav__link::after { display: none; }
 
             .ds-hero { padding-top: 130px; padding-bottom: 90px; }
@@ -1029,25 +1153,13 @@
 
             .ds-tabs { flex-direction: column; align-items: center; }
             .ds-tabs__btn { border-bottom: none; border-left: 3px solid transparent; text-align: left; width: 100%; max-width: 280px; }
-            .ds-tabs__btn--active { border-bottom-color: transparent; border-left-color: var(--col-maroon); background-color: var(--col-ivory-deep); }
+            .ds-tabs__btn--active { border-bottom-color: transparent; border-left-color: var(--accent-maroon); background-color: var(--bg-alt); }
         }
     </style>
 </head>
 <body>
 
-    <!-- =========================================================================
-         CUSTOMIZATION GUIDE (READ BEFORE EDITING):
-         Search for "[CUSTOMIZE]" tags in this file to find areas needing your input.
-         1. Replace School Name & Tagline in Hero/Header/Footer
-         2. Add History paragraphs in About Section
-         3. Add actual faculty/student names in Community Section
-         4. Add real event dates in Events Section
-         5. Update Contact details
-         6. Replace <div class="ds-img-placeholder"> blocks with real <img> tags
-         All layout, styling, and interactivity will remain intact!
-         ========================================================================= -->
-
-    <!-- SVG ICON SPRITE (hidden) — reused throughout via <use> -->
+    <!-- SVG ICON SPRITE (hidden) -->
     <svg width="0" height="0" style="position:absolute" aria-hidden="true">
       <defs>
         <symbol id="icon-lotus" viewBox="0 0 48 48"><path d="M24 44c0-10 0-18-0-22M24 22c-8-2-14-10-14-18 8 0 15 5 17 12M24 22c8-2 14-10 14-18-8 0-15 5-17 12M24 22c-5-6-14-8-21-4 3 7 11 12 18 11M24 22c5-6 14-8 21-4-3 7-11 12-18 11M14 34c-4-2-6-6-6-11 5 0 9 3 11 7M34 34c4-2 6-6 6-11-5 0-9 3-11 7M17 40c9 4 14 4 14 0"/></symbol>
@@ -1072,6 +1184,8 @@
         <symbol id="icon-medal" viewBox="0 0 48 48"><circle cx="24" cy="28" r="12"/><path d="M24 20v16M18 24l6-4 6 4M16 8l6 12 6-12"/></symbol>
         <symbol id="icon-sparkle" viewBox="0 0 48 48"><path d="M24 4l3 13 13 3-13 3-3 13-3-13-13-3 13-3z"/></symbol>
         <symbol id="icon-graduate" viewBox="0 0 48 48"><path d="M4 18L24 9l20 9-20 9-20-9z"/><path d="M14 23v10c3 3 7 5 10 5s7-2 10-5V23M40 18v12"/></symbol>
+        <symbol id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></symbol>
+        <symbol id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></symbol>
       </defs>
     </svg>
 
@@ -1087,25 +1201,32 @@
     <header class="ds-header" id="header">
         <div class="ds-container ds-header__inner">
             <a href="#home" class="ds-header__brand" aria-label="Go to homepage">
-                <!-- [CUSTOMIZE]: You can replace this placeholder div with an actual <img> tag later -->
                 <div class="ds-header__logo-placeholder"><svg class="ds-icon"><use href="#icon-lotus"/></svg></div>
                 <span>Sri Jinanandha Dhamma School</span>
             </a>
 
-            <button class="ds-header__mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
+            <div class="ds-header__actions">
+                <nav class="ds-nav" aria-label="Main Navigation">
+                    <ul class="ds-nav__list" id="navList">
+                        <li><a href="#home" class="ds-nav__link ds-nav__link--active">Home</a></li>
+                        <li><a href="#about" class="ds-nav__link">About Us</a></li>
+                        <li><a href="#mission" class="ds-nav__link">Mission</a></li>
+                        <li><a href="#community" class="ds-nav__link">Community</a></li>
+                        <li><a href="#events" class="ds-nav__link">Events</a></li>
+                        <li><a href="#contact" class="ds-nav__link">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- Theme Toggle Button -->
+                <button class="ds-theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+                    <svg class="ds-icon ds-icon-sun" aria-hidden="true"><use href="#icon-sun"/></svg>
+                    <svg class="ds-icon ds-icon-moon" aria-hidden="true"><use href="#icon-moon"/></svg>
+                </button>
 
-            <nav class="ds-nav" aria-label="Main Navigation">
-                <ul class="ds-nav__list" id="navList">
-                    <li><a href="#home" class="ds-nav__link ds-nav__link--active">Home</a></li>
-                    <li><a href="#about" class="ds-nav__link">About Us</a></li>
-                    <li><a href="#mission" class="ds-nav__link">Mission</a></li>
-                    <li><a href="#community" class="ds-nav__link">Community</a></li>
-                    <li><a href="#events" class="ds-nav__link">Events</a></li>
-                    <li><a href="#contact" class="ds-nav__link">Contact</a></li>
-                </ul>
-            </nav>
+                <button class="ds-header__mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -1113,25 +1234,22 @@
     <section class="ds-hero" id="home">
         <div class="ds-hero__rays" aria-hidden="true"></div>
         <svg class="ds-hero__mandala" viewBox="0 0 200 200" aria-hidden="true">
-            <use href="#icon-dharma-wheel" style="color:var(--col-maroon)"/>
+            <use href="#icon-dharma-wheel"/>
         </svg>
         <div class="ds-particles" id="heroParticles" aria-hidden="true"></div>
 
         <div class="ds-container ds-hero__inner">
             <div class="ds-hero__lotus-glow"><svg class="ds-icon"><use href="#icon-lotus"/></svg></div>
 
-            <!-- [CUSTOMIZE]: Change Jubilee years if needed -->
             <div class="ds-hero__badge">
                 <svg class="ds-icon"><use href="#icon-sparkle"/></svg> Golden Jubilee Celebration (1976 – 2026)
             </div>
 
             <h1 class="ds-hero__title" id="heroTitle">
-                <!-- [CUSTOMIZE]: Main headline -->
                 Guiding the Next Generation in the <em>Pure Dhamma</em>
             </h1>
 
             <p class="ds-hero__tagline">
-                <!-- [CUSTOMIZE]: School Tagline -->
                 Welcome to Sri Jinanandha English Medium Dhamma School. We provide a strong spiritual foundation, helping students build moral character for a peaceful and mindful life.
             </p>
 
@@ -1142,7 +1260,7 @@
         </div>
     </section>
 
-    <div class="ds-divider ds-divider--to-white" aria-hidden="true">
+    <div class="ds-divider ds-divider--to-alt" aria-hidden="true">
         <svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path fill="currentColor" d="M0,40 C200,90 350,0 600,30 C850,60 1000,0 1200,40 L1200,70 L0,70 Z"/></svg>
     </div>
 
@@ -1157,14 +1275,12 @@
 
             <div class="ds-about">
                 <div class="ds-about__content ds-reveal">
-                    <!-- [CUSTOMIZE]: Add your school's 2-3 paragraph history here -->
                     <p>Marking the pride of half a century of noble Dhamma service, our Dhamma School began as a humble endeavor and stands unwavering today, having awakened the wisdom of thousands of children.</p>
                     <p>No matter how much society changes, our dedication to gifting the nation a virtuous, respectful, and moral generation through the pure teachings of the Buddha remains our highest priority. We guide children on the right path by cultivating loving-kindness (Metta) and patience in their hearts.</p>
                     <p>Supported by the Venerable Maha Sangha and our dedicated volunteer teachers, we continue to illuminate the spiritual path for our youth.</p>
                 </div>
 
                 <div class="ds-stats ds-reveal-stagger">
-                    <!-- [CUSTOMIZE]: Update these numerical statistics -->
                     <div class="ds-stat-card">
                         <div class="ds-stat-card__icon"><svg class="ds-icon"><use href="#icon-temple"/></svg></div>
                         <div class="ds-stat-card__value" data-count="1976" data-suffix="">0</div>
@@ -1197,14 +1313,12 @@
                 <span class="ds-eyebrow"><span class="ds-eyebrow__line"></span>What We Stand For<span class="ds-eyebrow__line"></span></span>
                 <h2 class="ds-section__title">Our Mission &amp; Core Values</h2>
                 <p class="ds-section__subtitle">
-                    <!-- [CUSTOMIZE]: Write your school's core mission statement -->
                     To impart the teachings of Buddhism in English, fostering discipline, mindfulness, and empathy in our youth to navigate modern challenges.
                 </p>
             </div>
 
             <!-- Core Pillars -->
             <div class="ds-values-grid ds-reveal-stagger">
-                <!-- [CUSTOMIZE]: Modify pillar titles and descriptions -->
                 <div class="ds-value-card">
                     <div class="ds-value-card__icon"><svg class="ds-icon"><use href="#icon-light"/></svg></div>
                     <h3 class="ds-value-card__title">Wisdom (Paññā)</h3>
@@ -1231,7 +1345,6 @@
             <div class="ds-precepts ds-reveal">
                 <h3 class="ds-precepts__title">Guiding Principles: The Five Noble Precepts</h3>
                 <ul class="ds-precepts__list">
-                    <!-- [CUSTOMIZE]: Precept descriptions can be adjusted -->
                     <li class="ds-precepts__item">I undertake the precept to refrain from destroying living creatures. (Cultivating Compassion)</li>
                     <li class="ds-precepts__item">I undertake the precept to refrain from taking that which is not given. (Cultivating Generosity)</li>
                     <li class="ds-precepts__item">I undertake the precept to refrain from sexual misconduct. (Cultivating Contentment)</li>
@@ -1242,7 +1355,7 @@
         </div>
     </section>
 
-    <div class="ds-divider" aria-hidden="true">
+    <div class="ds-divider ds-divider--to-alt" aria-hidden="true">
         <svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path fill="currentColor" d="M0,30 C250,0 350,60 600,35 C850,10 950,60 1200,20 L1200,70 L0,70 Z"/></svg>
     </div>
 
@@ -1264,7 +1377,6 @@
             <!-- Tab 1: Faculty -->
             <div id="facultyTab" class="ds-tabs__pane ds-tabs__pane--active" role="tabpanel">
                 <div class="ds-profile-grid">
-                    <!-- [CUSTOMIZE]: Replace Faculty details -->
                     <div class="ds-profile-card">
                         <div class="ds-profile-card__avatar"><svg class="ds-icon"><use href="#icon-hands"/></svg></div>
                         <h4 class="ds-profile-card__name">Ven. [Monk Name] Thero</h4>
@@ -1295,7 +1407,6 @@
             <!-- Tab 2: Students -->
             <div id="studentTab" class="ds-tabs__pane" role="tabpanel">
                 <div class="ds-profile-grid">
-                    <!-- [CUSTOMIZE]: Replace Student Leader details -->
                     <div class="ds-profile-card">
                         <div class="ds-profile-card__avatar"><svg class="ds-icon"><use href="#icon-medal"/></svg></div>
                         <h4 class="ds-profile-card__name">[Student Name]</h4>
@@ -1330,7 +1441,6 @@
             </div>
 
             <div class="ds-timeline">
-                <!-- [CUSTOMIZE]: Update Event Names, Dates, and Descriptions -->
                 <div class="ds-timeline__item ds-timeline__item--left ds-reveal">
                     <div class="ds-timeline__marker"><svg class="ds-icon"><use href="#icon-calendar"/></svg></div>
                     <div class="ds-timeline__content">
@@ -1379,7 +1489,7 @@
         </div>
     </section>
 
-    <div class="ds-divider ds-divider--to-white" aria-hidden="true">
+    <div class="ds-divider ds-divider--to-alt" aria-hidden="true">
         <svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path fill="currentColor" d="M0,40 C200,90 350,0 600,30 C850,60 1000,0 1200,40 L1200,70 L0,70 Z"/></svg>
     </div>
 
@@ -1395,7 +1505,6 @@
             <div class="ds-contact">
                 <!-- Contact Info -->
                 <div class="ds-contact__info-box ds-reveal">
-                    <!-- [CUSTOMIZE]: Update all contact details below -->
                     <div class="ds-contact__detail">
                         <div class="ds-contact__icon"><svg class="ds-icon"><use href="#icon-pin"/></svg></div>
                         <div class="ds-contact__text">
@@ -1476,7 +1585,6 @@
                     <div class="ds-footer__brand-icon"><svg class="ds-icon"><use href="#icon-lotus"/></svg></div>
                     <div>
                         <h3>Sri Jinanandha Dhamma School</h3>
-                        <!-- [CUSTOMIZE]: Footer short bio -->
                         <p>Dedicated to providing a strong spiritual foundation and teaching the profound teachings of the Buddha in the English medium, helping students build moral character.</p>
                     </div>
                 </div>
@@ -1494,7 +1602,6 @@
 
                 <div>
                     <h4 class="ds-footer__title">Connect With Us</h4>
-                    <!-- [CUSTOMIZE]: Update Social Links -->
                     <div class="ds-footer__social">
                         <a href="#" aria-label="Facebook"><svg class="ds-icon"><use href="#icon-fb"/></svg></a>
                         <a href="#" aria-label="YouTube"><svg class="ds-icon"><use href="#icon-yt"/></svg></a>
@@ -1506,7 +1613,7 @@
 
             <div class="ds-footer__bottom">
                 <p>&copy; <span id="currentYear"></span> Sri Jinanandha English Medium Dhamma School. All rights reserved.</p>
-                <p style="margin-top: 8px; color: var(--col-gold-light);">"May the Noble Triple Gem bless you with wisdom, peace, and compassion." 🙏</p>
+                <p style="margin-top: 8px; color: var(--accent-gold-light);">"May the Noble Triple Gem bless you with wisdom, peace, and compassion." 🙏</p>
             </div>
         </div>
     </footer>
@@ -1518,16 +1625,45 @@
 
     <script>
         /* ==========================================================================
-           JAVASCRIPT INTERACTIVITY
+           JAVASCRIPT INTERACTIVITY & THEME HANDLING
            ========================================================================== */
 
-        // 0. Loading overlay — hide once page is ready
+        // 1. Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const rootElement = document.documentElement;
+        const metaThemeColor = document.getElementById('meta-theme-color');
+
+        themeToggleBtn.addEventListener('click', () => {
+            // Apply a transition class temporarily to animate background/color changes
+            document.body.classList.add('theme-transition');
+            
+            const currentTheme = rootElement.getAttribute('data-theme');
+            let newTheme = 'light';
+            
+            if (currentTheme === 'dark') {
+                rootElement.removeAttribute('data-theme');
+                metaThemeColor?.setAttribute('content', '#12332B');
+            } else {
+                rootElement.setAttribute('data-theme', 'dark');
+                newTheme = 'dark';
+                metaThemeColor?.setAttribute('content', '#0C1210');
+            }
+
+            localStorage.setItem('ds-theme', newTheme);
+
+            // Remove the transition class after animation completes (400ms match css duration)
+            setTimeout(() => {
+                document.body.classList.remove('theme-transition');
+            }, 400);
+        });
+
+        // 2. Loading overlay — hide once page is ready
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
             setTimeout(() => loader.classList.add('ds-loader--hidden'), 350);
         });
 
-        // 1. Mobile Menu Toggle
+        // 3. Mobile Menu Toggle
         const mobileToggle = document.getElementById('mobileToggle');
         const navList = document.getElementById('navList');
         const navLinks = document.querySelectorAll('.ds-nav__link');
@@ -1547,7 +1683,7 @@
             });
         });
 
-        // 2. Sticky Header, Back to Top visibility, and Scroll Progress Bar
+        // 4. Sticky Header, Back to Top visibility, and Scroll Progress Bar
         const header = document.getElementById('header');
         const backTopBtn = document.getElementById('backTopBtn');
         const progressBar = document.getElementById('progressBar');
@@ -1568,12 +1704,11 @@
         }
         window.addEventListener('scroll', onScroll, { passive: true });
 
-        // Scroll to top function
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 3. Tab Switching Logic (Community Section)
+        // 5. Tab Switching Logic (Community Section)
         function openTab(evt, tabId) {
             const tabPanes = document.querySelectorAll('.ds-tabs__pane');
             tabPanes.forEach(pane => pane.classList.remove('ds-tabs__pane--active'));
@@ -1589,7 +1724,7 @@
             evt.currentTarget.setAttribute('aria-selected', 'true');
         }
 
-        // 4. Scrollspy (Highlight active navigation link based on scroll position)
+        // 6. Scrollspy (Highlight active navigation link based on scroll position)
         const sections = document.querySelectorAll('section[id]');
 
         window.addEventListener('scroll', () => {
@@ -1612,7 +1747,7 @@
             });
         }, { passive: true });
 
-        // 5. Form Submission Handler (Prevents default refresh and shows message)
+        // 7. Form Submission Handler
         function handleFormSubmit(event) {
             event.preventDefault();
             const messageBox = document.getElementById('formMessage');
@@ -1621,10 +1756,10 @@
             setTimeout(() => { messageBox.style.display = 'none'; }, 5000);
         }
 
-        // 6. Set current year in footer automatically
+        // 8. Set current year in footer automatically
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // 7. Scroll reveal animations (IntersectionObserver)
+        // 9. Scroll reveal animations (IntersectionObserver)
         const revealEls = document.querySelectorAll('.ds-reveal, .ds-reveal-stagger');
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1636,7 +1771,7 @@
         }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
         revealEls.forEach(el => revealObserver.observe(el));
 
-        // 8. Animated counters for stats
+        // 10. Animated counters for stats
         const counterEls = document.querySelectorAll('[data-count]');
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1660,11 +1795,10 @@
         }, { threshold: 0.5 });
         counterEls.forEach(el => counterObserver.observe(el));
 
-        // 9. Hero title word-by-word reveal
+        // 11. Hero title word-by-word reveal
         (function initHeroTitle() {
             const titleEl = document.getElementById('heroTitle');
             const raw = titleEl.innerHTML;
-            // Split on spaces while preserving the <em> tag as a single token
             const tokens = raw.trim().split(/\s+/);
             let delay = 0.25;
             const wrapped = tokens.map(tok => {
@@ -1675,7 +1809,7 @@
             titleEl.innerHTML = wrapped;
         })();
 
-        // 10. Floating golden particles in hero
+        // 12. Floating golden particles in hero
         (function initParticles() {
             const container = document.getElementById('heroParticles');
             const count = window.innerWidth < 768 ? 10 : 20;
@@ -1691,7 +1825,7 @@
             }
         })();
 
-        // 11. Button ripple effect
+        // 13. Button ripple effect
         document.querySelectorAll('.ds-js-ripple').forEach(btn => {
             btn.addEventListener('click', function (e) {
                 const rect = this.getBoundingClientRect();
@@ -1706,9 +1840,10 @@
             });
         });
 
-        // 12. Lazy-load ready hook for future <img loading="lazy"> replacements
+        // 14. Lazy-load ready hook
         document.querySelectorAll('img').forEach(img => {
             if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
         });
     </script>
 </body>
+</html>
