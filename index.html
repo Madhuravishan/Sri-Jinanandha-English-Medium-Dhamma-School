@@ -5,85 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- [CUSTOMIZE]: Update title and meta description for SEO -->
     <title>Sri Jinanandha English Medium Dhamma School</title>
-    <meta name="description" content="Guiding the next generation in the Dhamma. Sri Jinanandha English Medium Dhamma School.">
-    
-    <!-- Google Fonts for elegant typography -->
+    <meta name="description" content="Guiding the next generation in the Dhamma. Sri Jinanandha English Medium Dhamma School — nurturing wisdom, compassion and mindfulness since 1976.">
+    <meta name="theme-color" content="#12332B">
+
+    <!-- Google Fonts for elegant, spiritual typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
 
     <style>
         /* ==========================================================================
-           BEM CSS ARCHITECTURE - CUSTOM STYLESHEET
+           DESIGN TOKENS — Sri Jinanandha Dhamma School
+           Palette: temple gold, deep robe maroon, ivory parchment, deep bodhi-leaf teal
            ========================================================================== */
-        
+
         :root {
-            /* Color Palette */
-            --col-navy: #1A3A52;
-            --col-maroon: #6B3E2E;
-            --col-saffron-soft: #D4A574;
-            --col-gold: #E6A817;
-            --col-white: #FFFFFF;
-            --col-bg-light: #FAFAFC;
-            --col-text-main: #333333;
-            --col-text-muted: #666666;
-            --col-border: #EAEAEA;
-            
+            /* Color Palette — refined, sacred, warm */
+            --col-teal:            #12332B;   /* deep bodhi-leaf / temple shadow */
+            --col-teal-deeper:     #0B241D;
+            --col-maroon:          #7A2B1E;   /* saffron-robe maroon */
+            --col-maroon-deep:     #5C1F16;
+            --col-gold:            #C08829;   /* temple gold */
+            --col-gold-light:      #E3B95C;
+            --col-gold-pale:       #F2DFAE;
+            --col-ivory:           #FBF6EA;   /* warm parchment background */
+            --col-ivory-deep:      #F3ECDA;
+            --col-white:           #FFFFFF;
+            --col-text-main:       #2B2620;
+            --col-text-muted:      #6E6455;
+            --col-border:          #E7DDC6;
+
             /* Typography */
-            --font-heading: 'Lora', serif;
+            --font-display: 'Fraunces', serif;
             --font-body: 'Inter', sans-serif;
-            
+            --font-accent: 'Cormorant Garamond', serif;
+
             /* Shadows & Radii */
-            --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
-            --shadow-md: 0 10px 20px rgba(0,0,0,0.08);
-            --shadow-lg: 0 20px 40px rgba(26, 58, 82, 0.1);
-            --radius-md: 12px;
-            --radius-lg: 24px;
+            --shadow-sm: 0 4px 14px rgba(43, 38, 32, 0.06);
+            --shadow-md: 0 14px 34px rgba(43, 38, 32, 0.10);
+            --shadow-lg: 0 26px 60px rgba(18, 51, 43, 0.16);
+            --shadow-gold: 0 8px 30px rgba(192, 136, 41, 0.25);
+            --radius-md: 14px;
+            --radius-lg: 28px;
             --radius-full: 9999px;
-            
+
             /* Transitions */
-            --trans-fast: 0.2s ease;
-            --trans-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --trans-fast: 0.25s ease;
+            --trans-smooth: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            --trans-slow: 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         /* Reset & Base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: var(--font-body);
             color: var(--col-text-main);
-            background-color: var(--col-bg-light);
-            line-height: 1.6;
+            background-color: var(--col-ivory);
+            line-height: 1.65;
             overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-heading);
-            color: var(--col-navy);
-            line-height: 1.3;
+            font-family: var(--font-display);
+            color: var(--col-teal);
+            line-height: 1.25;
+            font-weight: 500;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; height: auto; display: block; }
+        ul { list-style: none; }
+        button { font-family: inherit; }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
+        ::selection { background: var(--col-gold-pale); color: var(--col-maroon-deep); }
 
-        ul {
-            list-style: none;
+        /* Respect reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
 
         /* Reusable Layout Blocks */
@@ -92,10 +98,13 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
+            position: relative;
         }
 
         .ds-section {
-            padding: 96px 0;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
         }
 
         .ds-section--alternate {
@@ -104,20 +113,87 @@
 
         .ds-section__header {
             text-align: center;
-            margin-bottom: 64px;
+            margin-bottom: 72px;
+            position: relative;
+        }
+
+        .ds-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-accent);
+            font-style: italic;
+            font-size: 1.05rem;
+            letter-spacing: 0.04em;
+            color: var(--col-gold);
+            margin-bottom: 14px;
+        }
+
+        .ds-eyebrow__line {
+            width: 28px;
+            height: 1px;
+            background: var(--col-gold);
+            display: inline-block;
         }
 
         .ds-section__title {
-            font-size: 2.5rem;
-            margin-bottom: 16px;
+            font-size: clamp(2.1rem, 4vw, 2.75rem);
+            margin-bottom: 18px;
             color: var(--col-maroon);
+            font-weight: 500;
         }
 
         .ds-section__subtitle {
             font-size: 1.125rem;
             color: var(--col-text-muted);
-            max-width: 600px;
+            max-width: 620px;
             margin: 0 auto;
+        }
+
+        /* Scroll reveal */
+        .ds-reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+        }
+        .ds-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .ds-reveal-stagger > * {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+        }
+        .ds-reveal-stagger.is-visible > * { opacity: 1; transform: translateY(0); }
+        .ds-reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
+        .ds-reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 0.15s; }
+        .ds-reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 0.25s; }
+        .ds-reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 0.35s; }
+        .ds-reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 0.45s; }
+
+        /* Icon utility */
+        .ds-icon {
+            width: 1em;
+            height: 1em;
+            display: inline-block;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            vertical-align: -0.15em;
+        }
+
+        /* Scroll progress bar */
+        .ds-progress {
+            position: fixed;
+            top: 0; left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--col-gold), var(--col-gold-light));
+            z-index: 1200;
+            transition: width 0.1s linear;
         }
 
         /* Buttons */
@@ -125,24 +201,41 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 14px 28px;
+            gap: 8px;
+            padding: 15px 32px;
             border-radius: var(--radius-full);
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.98rem;
             cursor: pointer;
             transition: all var(--trans-smooth);
             border: none;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .ds-btn__ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.55);
+            transform: scale(0);
+            animation: ds-ripple 0.65s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes ds-ripple {
+            to { transform: scale(3); opacity: 0; }
         }
 
         .ds-btn--primary {
-            background-color: var(--col-maroon);
+            background: linear-gradient(135deg, var(--col-maroon), var(--col-maroon-deep));
             color: var(--col-white);
             box-shadow: var(--shadow-sm);
         }
 
-        .ds-btn--primary:hover, .ds-btn--primary:focus {
-            background-color: var(--col-navy);
-            transform: translateY(-2px);
+        .ds-btn--primary:hover, .ds-btn--primary:focus-visible {
+            background: linear-gradient(135deg, var(--col-teal), var(--col-teal-deeper));
+            transform: translateY(-3px);
             box-shadow: var(--shadow-md);
             outline: none;
         }
@@ -150,204 +243,328 @@
         .ds-btn--outline {
             background-color: transparent;
             color: var(--col-maroon);
-            border: 2px solid var(--col-maroon);
+            border: 1.5px solid var(--col-maroon);
         }
 
-        .ds-btn--outline:hover, .ds-btn--outline:focus {
+        .ds-btn--outline:hover, .ds-btn--outline:focus-visible {
             background-color: var(--col-maroon);
             color: var(--col-white);
+            transform: translateY(-3px);
             outline: none;
+        }
+
+        a.ds-btn:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, .ds-nav__link:focus-visible {
+            outline: 2px solid var(--col-gold);
+            outline-offset: 3px;
         }
 
         /* Header Component */
         .ds-header {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--col-border);
+            top: 0; left: 0; width: 100%;
+            background-color: rgba(251, 246, 234, 0.88);
+            backdrop-filter: blur(14px) saturate(140%);
+            border-bottom: 1px solid rgba(192,136,41,0.18);
             z-index: 1000;
             transition: all var(--trans-fast);
         }
 
         .ds-header--scrolled {
             box-shadow: var(--shadow-sm);
-            padding: 4px 0;
+            background-color: rgba(251, 246, 234, 0.97);
         }
 
         .ds-header__inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px;
+            height: 84px;
         }
 
         .ds-header__brand {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-family: var(--font-heading);
-            font-weight: 700;
-            font-size: 1.25rem;
+            gap: 13px;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.2rem;
             color: var(--col-maroon);
         }
 
         .ds-header__logo-placeholder {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--col-gold), var(--col-saffron-soft));
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--col-gold), var(--col-gold-light));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.5rem;
+            color: var(--col-teal-deeper);
+            box-shadow: var(--shadow-gold);
+            position: relative;
         }
+        .ds-header__logo-placeholder .ds-icon { width: 22px; height: 22px; stroke-width: 1.4; }
 
-        .ds-nav__list {
-            display: flex;
-            gap: 32px;
-        }
+        .ds-nav__list { display: flex; gap: 30px; }
 
         .ds-nav__link {
             font-weight: 500;
-            color: var(--col-navy);
+            font-size: 0.96rem;
+            color: var(--col-teal);
             transition: color var(--trans-fast);
             position: relative;
+            letter-spacing: 0.01em;
         }
 
         .ds-nav__link::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
+            width: 0; height: 2px;
+            bottom: -6px; left: 0;
             background-color: var(--col-gold);
             transition: width var(--trans-fast);
         }
 
-        .ds-nav__link:hover::after,
-        .ds-nav__link--active::after {
-            width: 100%;
-        }
-
-        .ds-nav__link:hover,
-        .ds-nav__link--active {
-            color: var(--col-maroon);
-        }
+        .ds-nav__link:hover::after, .ds-nav__link--active::after { width: 100%; }
+        .ds-nav__link:hover, .ds-nav__link--active { color: var(--col-maroon); }
 
         .ds-header__mobile-toggle {
             display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--col-navy);
+            background: none; border: none;
+            color: var(--col-teal);
             cursor: pointer;
+            width: 32px; height: 24px;
+            position: relative;
         }
+        .ds-header__mobile-toggle span {
+            position: absolute; left: 0; width: 100%; height: 2px;
+            background: var(--col-teal); border-radius: 2px;
+            transition: var(--trans-smooth);
+        }
+        .ds-header__mobile-toggle span:nth-child(1) { top: 0; }
+        .ds-header__mobile-toggle span:nth-child(2) { top: 11px; }
+        .ds-header__mobile-toggle span:nth-child(3) { top: 22px; }
+        .ds-header__mobile-toggle--open span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
+        .ds-header__mobile-toggle--open span:nth-child(2) { opacity: 0; }
+        .ds-header__mobile-toggle--open span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
 
-        /* Hero Component */
+        /* ==========================================================================
+           HERO — cinematic, sacred atmosphere
+           ========================================================================== */
         .ds-hero {
-            padding-top: 160px;
-            padding-bottom: 120px;
-            background: linear-gradient(135deg, var(--col-bg-light) 0%, #F0E8DD 100%);
+            padding-top: 190px;
+            padding-bottom: 150px;
+            background:
+                radial-gradient(ellipse 60% 50% at 50% 0%, rgba(192,136,41,0.16) 0%, rgba(251,246,234,0) 60%),
+                linear-gradient(180deg, var(--col-ivory) 0%, var(--col-ivory-deep) 100%);
             position: relative;
             overflow: hidden;
             text-align: center;
         }
 
-        .ds-hero::before {
-            content: '';
+        /* Light rays */
+        .ds-hero__rays {
             position: absolute;
-            top: -10%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(230,168,23,0.1) 0%, rgba(255,255,255,0) 70%);
-            border-radius: 50%;
+            top: -20%; left: 50%;
+            width: 1400px; height: 1400px;
+            transform: translateX(-50%);
+            background: conic-gradient(from 0deg,
+                transparent 0deg, rgba(230,190,100,0.09) 3deg, transparent 9deg,
+                transparent 20deg, rgba(230,190,100,0.07) 23deg, transparent 30deg,
+                transparent 45deg, rgba(230,190,100,0.09) 48deg, transparent 55deg,
+                transparent 70deg, rgba(230,190,100,0.06) 74deg, transparent 80deg);
+            animation: ds-rays-spin 90s linear infinite;
+            pointer-events: none;
         }
+        @keyframes ds-rays-spin { to { transform: translateX(-50%) rotate(360deg); } }
+
+        /* Mandala watermark */
+        .ds-hero__mandala {
+            position: absolute;
+            bottom: -280px; left: 50%;
+            transform: translateX(-50%);
+            width: 780px; height: 780px;
+            opacity: 0.05;
+            animation: ds-mandala-spin 160s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes ds-mandala-spin { to { transform: translateX(-50%) rotate(360deg); } }
+
+        /* Floating particles (golden dust / fireflies) */
+        .ds-particles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+        .ds-particle {
+            position: absolute;
+            width: var(--size, 5px); height: var(--size, 5px);
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--col-gold-light), transparent 70%);
+            opacity: 0;
+            animation: ds-float-up var(--dur, 14s) ease-in var(--delay, 0s) infinite;
+            bottom: -20px;
+            left: var(--x, 50%);
+        }
+        @keyframes ds-float-up {
+            0% { opacity: 0; transform: translateY(0) translateX(0) scale(0.6); }
+            8% { opacity: 0.85; }
+            50% { transform: translateY(-260px) translateX(18px) scale(1); }
+            85% { opacity: 0.5; }
+            100% { opacity: 0; transform: translateY(-520px) translateX(-14px) scale(0.5); }
+        }
+
+        .ds-hero__inner { position: relative; z-index: 2; }
+
+        .ds-hero__lotus-glow {
+            width: 92px; height: 92px;
+            margin: 0 auto 20px auto;
+            position: relative;
+            color: var(--col-gold);
+            animation: ds-breathe 4.5s ease-in-out infinite;
+        }
+        .ds-hero__lotus-glow .ds-icon { width: 100%; height: 100%; stroke-width: 1.1; }
+        .ds-hero__lotus-glow::after {
+            content: '';
+            position: absolute; inset: -30%;
+            background: radial-gradient(circle, rgba(192,136,41,0.35), transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: ds-glow-pulse 4.5s ease-in-out infinite;
+        }
+        @keyframes ds-breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+        @keyframes ds-glow-pulse { 0%, 100% { opacity: 0.5; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.15); } }
 
         .ds-hero__badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background-color: rgba(230, 168, 23, 0.15);
+            background-color: rgba(192, 136, 41, 0.12);
             color: var(--col-maroon);
-            padding: 8px 16px;
+            padding: 9px 20px;
             border-radius: var(--radius-full);
             font-weight: 600;
-            font-size: 0.875rem;
-            margin-bottom: 24px;
-            border: 1px solid rgba(230, 168, 23, 0.3);
+            font-size: 0.85rem;
+            letter-spacing: 0.03em;
+            margin-bottom: 28px;
+            border: 1px solid rgba(192, 136, 41, 0.35);
+            opacity: 0;
+            animation: ds-fade-up 1s cubic-bezier(0.16,1,0.3,1) 0.15s forwards;
         }
+        .ds-hero__badge .ds-icon { width: 14px; height: 14px; }
 
         .ds-hero__title {
-            font-size: 4rem;
-            color: var(--col-navy);
-            margin-bottom: 24px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+            color: var(--col-teal);
+            margin-bottom: 26px;
+            max-width: 920px;
+            margin-left: auto; margin-right: auto;
+            font-weight: 500;
+        }
+        .ds-hero__title span {
+            display: inline-block;
+            opacity: 0;
+            filter: blur(6px);
+            transform: translateY(18px);
+            animation: ds-word-reveal 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+        }
+        @keyframes ds-word-reveal {
+            to { opacity: 1; filter: blur(0); transform: translateY(0); }
+        }
+        .ds-hero__title em {
+            font-style: italic;
+            color: var(--col-maroon);
+            font-family: var(--font-accent);
+            font-weight: 500;
         }
 
         .ds-hero__tagline {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--col-text-muted);
-            max-width: 700px;
-            margin: 0 auto 40px auto;
+            max-width: 680px;
+            margin: 0 auto 44px auto;
+            opacity: 0;
+            animation: ds-fade-up 1s cubic-bezier(0.16,1,0.3,1) 0.9s forwards;
         }
 
         .ds-hero__actions {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
+            display: flex; gap: 18px; justify-content: center;
+            opacity: 0;
+            animation: ds-fade-up 1s cubic-bezier(0.16,1,0.3,1) 1.05s forwards;
         }
 
-        /* About Component */
+        @keyframes ds-fade-up {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Curved section divider (temple-eave style) */
+        .ds-divider {
+            position: relative;
+            line-height: 0;
+            width: 100%;
+            color: var(--col-white);
+            margin-top: -2px;
+        }
+        .ds-divider--to-ivory { color: var(--col-ivory); }
+        .ds-divider svg { width: 100%; height: 70px; display: block; }
+
+        /* ==========================================================================
+           ABOUT
+           ========================================================================== */
         .ds-about {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 64px;
+            gap: 72px;
             align-items: center;
         }
 
         .ds-about__content p {
-            margin-bottom: 16px;
-            font-size: 1.125rem;
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+            color: var(--col-text-main);
+        }
+        .ds-about__content p:first-of-type::first-letter {
+            font-family: var(--font-display);
+            font-size: 3.4rem;
+            float: left;
+            line-height: 0.8;
+            padding: 6px 10px 0 0;
+            color: var(--col-maroon);
         }
 
         .ds-stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
+            gap: 22px;
         }
 
         .ds-stat-card {
             background: var(--col-white);
-            padding: 32px 24px;
+            padding: 34px 22px;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
             text-align: center;
             transition: transform var(--trans-smooth), box-shadow var(--trans-smooth);
             border: 1px solid var(--col-border);
+            perspective: 800px;
         }
 
         .ds-stat-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
             box-shadow: var(--shadow-md);
         }
 
         .ds-stat-card__icon {
-            font-size: 2.5rem;
-            margin-bottom: 16px;
+            width: 46px; height: 46px;
+            margin: 0 auto 16px auto;
+            color: var(--col-gold);
+            display: flex; align-items: center; justify-content: center;
+            background: var(--col-gold-pale);
+            border-radius: 50%;
         }
+        .ds-stat-card__icon .ds-icon { width: 22px; height: 22px; }
 
         .ds-stat-card__value {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            font-weight: 700;
+            font-family: var(--font-display);
+            font-size: 2.1rem;
+            font-weight: 600;
             color: var(--col-maroon);
             margin-bottom: 4px;
         }
@@ -355,6 +572,7 @@
         .ds-stat-card__label {
             font-weight: 500;
             color: var(--col-text-muted);
+            font-size: 0.92rem;
         }
 
         /* Core Values */
@@ -362,131 +580,132 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 24px;
-            margin-bottom: 64px;
+            margin-bottom: 72px;
         }
 
         .ds-value-card {
             background: var(--col-white);
-            padding: 32px 24px;
+            padding: 36px 26px;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
             text-align: center;
             transition: all var(--trans-smooth);
+            border: 1px solid transparent;
         }
 
         .ds-value-card:hover {
             box-shadow: var(--shadow-lg);
             transform: translateY(-8px);
+            border-color: rgba(192,136,41,0.25);
         }
 
         .ds-value-card__icon {
-            width: 64px;
-            height: 64px;
-            background-color: rgba(212, 165, 116, 0.15);
+            width: 68px; height: 68px;
+            background: linear-gradient(135deg, var(--col-gold-pale), var(--col-ivory-deep));
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
+            display: flex; align-items: center; justify-content: center;
             margin: 0 auto 24px auto;
+            color: var(--col-maroon);
+            transition: transform var(--trans-smooth);
         }
+        .ds-value-card:hover .ds-value-card__icon { transform: rotate(8deg) scale(1.06); }
+        .ds-value-card__icon .ds-icon { width: 28px; height: 28px; }
 
         .ds-value-card__title {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             margin-bottom: 12px;
-            color: var(--col-navy);
+            color: var(--col-teal);
         }
 
         .ds-value-card__desc {
-            font-size: 0.9375rem;
+            font-size: 0.94rem;
             color: var(--col-text-muted);
         }
 
         /* Precepts List */
         .ds-precepts {
-            background-color: var(--col-bg-light);
+            background: linear-gradient(160deg, var(--col-teal) 0%, var(--col-teal-deeper) 100%);
             border-radius: var(--radius-lg);
-            padding: 48px;
-            max-width: 800px;
+            padding: 56px;
+            max-width: 820px;
             margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .ds-precepts::before {
+            content: '';
+            position: absolute; top: -60px; right: -60px;
+            width: 220px; height: 220px;
+            background: radial-gradient(circle, rgba(192,136,41,0.25), transparent 70%);
+            border-radius: 50%;
         }
 
         .ds-precepts__title {
             text-align: center;
-            margin-bottom: 32px;
-            color: var(--col-maroon);
+            margin-bottom: 36px;
+            color: var(--col-gold-light);
+            position: relative;
         }
 
-        .ds-precepts__list {
-            counter-reset: precept-counter;
-        }
+        .ds-precepts__list { counter-reset: precept-counter; position: relative; }
 
         .ds-precepts__item {
             position: relative;
-            padding-left: 48px;
-            margin-bottom: 24px;
-            font-size: 1.125rem;
+            padding-left: 52px;
+            margin-bottom: 26px;
+            font-size: 1.08rem;
+            color: rgba(251,246,234,0.92);
         }
+        .ds-precepts__item:last-child { margin-bottom: 0; }
 
         .ds-precepts__item::before {
             counter-increment: precept-counter;
             content: counter(precept-counter);
-            position: absolute;
-            left: 0;
-            top: -4px;
-            width: 32px;
-            height: 32px;
-            background-color: var(--col-saffron-soft);
-            color: var(--col-white);
+            position: absolute; left: 0; top: -3px;
+            width: 34px; height: 34px;
+            background: linear-gradient(135deg, var(--col-gold), var(--col-gold-light));
+            color: var(--col-teal-deeper);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             font-weight: 700;
-            font-family: var(--font-heading);
+            font-family: var(--font-display);
+            box-shadow: var(--shadow-gold);
         }
 
         /* Community Tabs */
         .ds-tabs {
             display: flex;
             justify-content: center;
-            gap: 16px;
-            margin-bottom: 48px;
+            gap: 12px;
+            margin-bottom: 56px;
+            flex-wrap: wrap;
         }
 
         .ds-tabs__btn {
             background: none;
             border: none;
-            padding: 12px 32px;
-            font-size: 1.125rem;
+            padding: 13px 34px;
+            font-size: 1.05rem;
             font-weight: 600;
             color: var(--col-text-muted);
             cursor: pointer;
             border-bottom: 3px solid transparent;
             transition: all var(--trans-fast);
-            font-family: var(--font-heading);
+            font-family: var(--font-display);
         }
 
-        .ds-tabs__btn:hover {
-            color: var(--col-maroon);
-        }
+        .ds-tabs__btn:hover { color: var(--col-maroon); }
 
         .ds-tabs__btn--active {
             color: var(--col-maroon);
-            border-bottom-color: var(--col-maroon);
+            border-bottom-color: var(--col-gold);
         }
 
-        .ds-tabs__pane {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
+        .ds-tabs__pane { display: none; }
+        .ds-tabs__pane--active { display: block; animation: ds-tab-fade 0.55s cubic-bezier(0.16,1,0.3,1); }
 
-        .ds-tabs__pane--active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+        @keyframes ds-tab-fade {
+            from { opacity: 0; transform: translateY(14px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -498,226 +717,202 @@
         }
 
         .ds-profile-card {
-            background: var(--col-bg-light);
+            background: var(--col-ivory);
             border-radius: var(--radius-md);
-            padding: 32px;
+            padding: 36px 28px;
             text-align: center;
-            transition: transform var(--trans-fast);
+            transition: transform var(--trans-smooth), box-shadow var(--trans-smooth);
+            border: 1px solid var(--col-border);
         }
 
         .ds-profile-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
         }
 
         .ds-profile-card__avatar {
-            width: 96px;
-            height: 96px;
+            width: 100px; height: 100px;
             border-radius: 50%;
-            background-color: var(--col-white);
+            background: var(--col-white);
             box-shadow: var(--shadow-sm);
             margin: 0 auto 24px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            border: 2px solid var(--col-saffron-soft);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--col-maroon);
+            border: 2px solid var(--col-gold-light);
         }
+        .ds-profile-card__avatar .ds-icon { width: 40px; height: 40px; stroke-width: 1.3; }
 
         .ds-profile-card__name {
-            font-size: 1.25rem;
-            color: var(--col-navy);
+            font-size: 1.22rem;
+            color: var(--col-teal);
             margin-bottom: 4px;
         }
 
         .ds-profile-card__role {
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             color: var(--col-maroon);
             font-weight: 600;
             margin-bottom: 16px;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em;
         }
 
-        .ds-profile-card__bio {
-            font-size: 0.9375rem;
-            color: var(--col-text-muted);
-        }
+        .ds-profile-card__bio { font-size: 0.94rem; color: var(--col-text-muted); }
 
         /* Events Timeline */
-        .ds-timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        .ds-timeline { position: relative; max-width: 820px; margin: 0 auto; }
 
         .ds-timeline::after {
             content: '';
             position: absolute;
-            width: 4px;
-            background-color: var(--col-saffron-soft);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-            border-radius: 4px;
+            width: 2px;
+            background: repeating-linear-gradient(180deg, var(--col-gold-light) 0 8px, transparent 8px 16px);
+            top: 0; bottom: 0; left: 50%;
+            margin-left: -1px;
         }
 
         .ds-timeline__item {
-            padding: 16px 40px;
+            padding: 16px 44px;
             position: relative;
-            background-color: inherit;
             width: 50%;
         }
 
-        .ds-timeline__item--left {
-            left: 0;
-            text-align: right;
-        }
+        .ds-timeline__item--left { left: 0; text-align: right; }
+        .ds-timeline__item--right { left: 50%; }
 
-        .ds-timeline__item--right {
-            left: 50%;
-        }
-
-        .ds-timeline__item::after {
-            content: '🗓️';
+        .ds-timeline__marker {
             position: absolute;
-            width: 40px;
-            height: 40px;
-            right: -20px;
-            background-color: var(--col-white);
-            border: 4px solid var(--col-maroon);
-            top: 24px;
+            width: 44px; height: 44px;
+            right: -22px;
+            background: var(--col-white);
+            border: 3px solid var(--col-maroon);
+            top: 26px;
             border-radius: 50%;
             z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--col-maroon);
             box-shadow: var(--shadow-sm);
         }
-
-        .ds-timeline__item--right::after {
-            left: -20px;
-        }
+        .ds-timeline__marker .ds-icon { width: 18px; height: 18px; }
+        .ds-timeline__item--right .ds-timeline__marker { left: -22px; right: auto; }
 
         .ds-timeline__content {
-            padding: 24px;
+            padding: 26px;
             background-color: var(--col-white);
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--col-border);
-            transition: transform var(--trans-fast);
+            transition: transform var(--trans-fast), box-shadow var(--trans-fast);
         }
-        
+
         .ds-timeline__content:hover {
             transform: scale(1.02);
             box-shadow: var(--shadow-md);
+            border-color: rgba(192,136,41,0.3);
         }
 
         .ds-timeline__date {
             color: var(--col-maroon);
             font-weight: 600;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             margin-bottom: 8px;
             display: block;
+            letter-spacing: 0.03em;
         }
 
-        .ds-timeline__title {
-            font-size: 1.25rem;
-            margin-bottom: 8px;
-        }
+        .ds-timeline__title { font-size: 1.22rem; margin-bottom: 8px; }
+        .ds-timeline__content p { color: var(--col-text-muted); font-size: 0.96rem; }
 
         /* Contact Section */
-        .ds-contact {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 64px;
-        }
+        .ds-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
 
         .ds-contact__info-box {
-            background-color: var(--col-bg-light);
-            padding: 40px;
+            background: linear-gradient(160deg, var(--col-ivory-deep), var(--col-ivory));
+            padding: 44px;
             border-radius: var(--radius-lg);
+            border: 1px solid var(--col-border);
         }
 
-        .ds-contact__detail {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 32px;
-        }
+        .ds-contact__detail { display: flex; gap: 18px; margin-bottom: 32px; }
+        .ds-contact__detail:last-child { margin-bottom: 0; }
 
         .ds-contact__icon {
-            font-size: 1.5rem;
+            width: 46px; height: 46px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: var(--col-white);
             color: var(--col-maroon);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: var(--shadow-sm);
         }
+        .ds-contact__icon .ds-icon { width: 20px; height: 20px; }
 
-        .ds-contact__text h4 {
-            font-size: 1.125rem;
-            margin-bottom: 4px;
-        }
-
-        .ds-contact__text p {
-            color: var(--col-text-muted);
-            white-space: pre-line;
-        }
+        .ds-contact__text h4 { font-size: 1.1rem; margin-bottom: 4px; }
+        .ds-contact__text p { color: var(--col-text-muted); white-space: pre-line; font-size: 0.96rem; }
 
         .ds-form {
             background: var(--col-white);
-            padding: 40px;
+            padding: 44px;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
+            border: 1px solid var(--col-border);
         }
 
-        .ds-form__group {
-            margin-bottom: 24px;
-        }
+        .ds-form__group { margin-bottom: 24px; position: relative; }
 
         .ds-form__label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--col-navy);
+            display: block; margin-bottom: 8px;
+            font-weight: 500; color: var(--col-teal);
+            font-size: 0.94rem;
         }
 
-        .ds-form__input,
-        .ds-form__textarea {
+        .ds-form__input, .ds-form__textarea {
             width: 100%;
-            padding: 14px 16px;
-            border: 1px solid var(--col-border);
+            padding: 15px 17px;
+            border: 1.5px solid var(--col-border);
             border-radius: var(--radius-md);
             font-family: var(--font-body);
             font-size: 1rem;
-            transition: border-color var(--trans-fast);
-            background-color: var(--col-bg-light);
+            transition: border-color var(--trans-fast), box-shadow var(--trans-fast);
+            background-color: var(--col-ivory);
+            color: var(--col-text-main);
         }
 
-        .ds-form__input:focus,
-        .ds-form__textarea:focus {
+        .ds-form__input:focus, .ds-form__textarea:focus {
             outline: none;
-            border-color: var(--col-saffron-soft);
+            border-color: var(--col-gold);
             background-color: var(--col-white);
+            box-shadow: 0 0 0 4px rgba(192,136,41,0.14);
         }
 
-        .ds-form__textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
+        .ds-form__textarea { min-height: 150px; resize: vertical; }
 
         .ds-form__message {
             display: none;
-            padding: 16px;
-            background-color: #E6F4EA;
-            color: #1E4620;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 18px;
+            background-color: #E9F3EA;
+            color: #234A2A;
             border-radius: var(--radius-md);
             margin-top: 16px;
-            text-align: center;
+            font-size: 0.95rem;
         }
 
         /* Footer */
         .ds-footer {
-            background-color: var(--col-navy);
+            background: linear-gradient(180deg, var(--col-teal) 0%, var(--col-teal-deeper) 100%);
             color: var(--col-white);
-            padding: 80px 0 24px 0;
+            padding: 90px 0 28px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .ds-footer__wheel {
+            position: absolute;
+            top: -120px; right: -120px;
+            width: 340px; height: 340px;
+            opacity: 0.06;
+            animation: ds-mandala-spin 200s linear infinite;
         }
 
         .ds-footer__grid {
@@ -725,140 +920,116 @@
             grid-template-columns: 2fr 1fr 1fr;
             gap: 64px;
             margin-bottom: 64px;
+            position: relative;
         }
 
-        .ds-footer__brand h3 {
-            color: var(--col-white);
-            margin-bottom: 16px;
-        }
-
-        .ds-footer__brand p {
-            color: rgba(255,255,255,0.7);
-            max-width: 400px;
-        }
-
-        .ds-footer__title {
-            color: var(--col-gold);
-            font-size: 1.125rem;
-            margin-bottom: 24px;
-        }
-
-        .ds-footer__links li {
-            margin-bottom: 12px;
-        }
-
-        .ds-footer__links a {
-            color: rgba(255,255,255,0.7);
-            transition: color var(--trans-fast);
-        }
-
-        .ds-footer__links a:hover {
-            color: var(--col-white);
-        }
-
-        .ds-footer__social {
-            display: flex;
-            gap: 16px;
-        }
-
-        .ds-footer__social a {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255,255,255,0.1);
+        .ds-footer__brand { display: flex; align-items: flex-start; gap: 14px; }
+        .ds-footer__brand-icon {
+            width: 44px; height: 44px;
+            flex-shrink: 0;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color var(--trans-fast);
+            background: linear-gradient(135deg, var(--col-gold), var(--col-gold-light));
+            display: flex; align-items: center; justify-content: center;
+            color: var(--col-teal-deeper);
         }
+        .ds-footer__brand-icon .ds-icon { width: 22px; height: 22px; }
+        .ds-footer__brand h3 { color: var(--col-white); margin-bottom: 14px; }
+        .ds-footer__brand p { color: rgba(255,255,255,0.68); max-width: 400px; font-size: 0.96rem; }
 
-        .ds-footer__social a:hover {
-            background-color: var(--col-gold);
+        .ds-footer__title { color: var(--col-gold-light); font-size: 1.05rem; margin-bottom: 24px; }
+        .ds-footer__links li { margin-bottom: 13px; }
+        .ds-footer__links a { color: rgba(255,255,255,0.68); transition: color var(--trans-fast), padding-left var(--trans-fast); font-size: 0.95rem; }
+        .ds-footer__links a:hover { color: var(--col-white); padding-left: 4px; }
+
+        .ds-footer__social { display: flex; gap: 14px; }
+        .ds-footer__social a {
+            width: 42px; height: 42px;
+            background-color: rgba(255,255,255,0.08);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            transition: background-color var(--trans-fast), transform var(--trans-fast);
+            color: var(--col-white);
         }
+        .ds-footer__social a .ds-icon { width: 18px; height: 18px; }
+        .ds-footer__social a:hover { background-color: var(--col-gold); transform: translateY(-3px); }
 
         .ds-footer__bottom {
             text-align: center;
             padding-top: 32px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.12);
             color: rgba(255,255,255,0.5);
             font-size: 0.875rem;
+            position: relative;
         }
 
         /* Back to top */
         .ds-back-top {
             position: fixed;
-            bottom: 32px;
-            right: 32px;
-            width: 48px;
-            height: 48px;
-            background-color: var(--col-maroon);
+            bottom: 32px; right: 32px;
+            width: 50px; height: 50px;
+            background: linear-gradient(135deg, var(--col-maroon), var(--col-maroon-deep));
             color: white;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
+            display: flex; align-items: center; justify-content: center;
             box-shadow: var(--shadow-md);
             cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
+            opacity: 0; visibility: hidden;
             transition: all var(--trans-fast);
             border: none;
             z-index: 99;
         }
+        .ds-back-top .ds-icon { width: 20px; height: 20px; }
+        .ds-back-top:hover { background: linear-gradient(135deg, var(--col-gold), var(--col-gold-light)); transform: translateY(-4px); }
+        .ds-back-top--visible { opacity: 1; visibility: visible; }
 
-        .ds-back-top--visible {
-            opacity: 1;
-            visibility: visible;
+        /* Loading overlay */
+        .ds-loader {
+            position: fixed; inset: 0;
+            background: var(--col-ivory);
+            z-index: 2000;
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
         }
+        .ds-loader--hidden { opacity: 0; visibility: hidden; }
+        .ds-loader__lotus { width: 64px; height: 64px; color: var(--col-gold); animation: ds-breathe 1.6s ease-in-out infinite; }
+        .ds-loader__lotus .ds-icon { width: 100%; height: 100%; }
 
         /* Responsive Design */
         @media screen and (max-width: 992px) {
-            .ds-hero__title { font-size: 3rem; }
             .ds-about, .ds-contact, .ds-footer__grid { grid-template-columns: 1fr; gap: 48px; }
             .ds-values-grid { grid-template-columns: repeat(2, 1fr); }
-            
-            /* Timeline responsive adjustments */
+
             .ds-timeline::after { left: 31px; }
-            .ds-timeline__item { width: 100%; padding-left: 80px; padding-right: 0; }
-            .ds-timeline__item--left, .ds-timeline__item--right { left: 0; text-align: left; }
-            .ds-timeline__item--left::after, .ds-timeline__item--right::after { left: 11px; }
+            .ds-timeline__item { width: 100%; padding-left: 80px; padding-right: 0; text-align: left !important; }
+            .ds-timeline__item--left, .ds-timeline__item--right { left: 0; }
+            .ds-timeline__marker, .ds-timeline__item--right .ds-timeline__marker { left: 11px; right: auto; }
         }
 
         @media screen and (max-width: 768px) {
             .ds-header__mobile-toggle { display: block; }
             .ds-nav__list {
                 position: absolute;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background-color: var(--col-white);
+                top: 84px; left: 0; width: 100%;
+                background-color: var(--col-ivory);
                 flex-direction: column;
                 gap: 0;
                 box-shadow: var(--shadow-md);
                 clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
                 transition: clip-path var(--trans-smooth);
             }
-            .ds-nav__list--open {
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            }
-            .ds-nav__link {
-                display: block;
-                padding: 20px 24px;
-                border-bottom: 1px solid var(--col-border);
-            }
+            .ds-nav__list--open { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+            .ds-nav__link { display: block; padding: 20px 24px; border-bottom: 1px solid var(--col-border); }
             .ds-nav__link::after { display: none; }
-            
-            .ds-hero { padding-top: 120px; padding-bottom: 80px; }
-            .ds-hero__title { font-size: 2.25rem; }
-            .ds-section { padding: 64px 0; }
+
+            .ds-hero { padding-top: 130px; padding-bottom: 90px; }
+            .ds-section { padding: 76px 0; }
             .ds-values-grid, .ds-stats { grid-template-columns: 1fr; }
             .ds-hero__actions { flex-direction: column; }
-            .ds-precepts { padding: 24px; }
-            
-            .ds-tabs { flex-direction: column; }
-            .ds-tabs__btn { border-bottom: none; border-left: 3px solid transparent; text-align: left; }
-            .ds-tabs__btn--active { border-bottom-color: transparent; border-left-color: var(--col-maroon); background-color: var(--col-bg-light); }
+            .ds-precepts { padding: 30px; }
+
+            .ds-tabs { flex-direction: column; align-items: center; }
+            .ds-tabs__btn { border-bottom: none; border-left: 3px solid transparent; text-align: left; width: 100%; max-width: 280px; }
+            .ds-tabs__btn--active { border-bottom-color: transparent; border-left-color: var(--col-maroon); background-color: var(--col-ivory-deep); }
         }
     </style>
 </head>
@@ -872,20 +1043,57 @@
          3. Add actual faculty/student names in Community Section
          4. Add real event dates in Events Section
          5. Update Contact details
+         6. Replace <div class="ds-img-placeholder"> blocks with real <img> tags
          All layout, styling, and interactivity will remain intact!
          ========================================================================= -->
+
+    <!-- SVG ICON SPRITE (hidden) — reused throughout via <use> -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <symbol id="icon-lotus" viewBox="0 0 48 48"><path d="M24 44c0-10 0-18-0-22M24 22c-8-2-14-10-14-18 8 0 15 5 17 12M24 22c8-2 14-10 14-18-8 0-15 5-17 12M24 22c-5-6-14-8-21-4 3 7 11 12 18 11M24 22c5-6 14-8 21-4-3 7-11 12-18 11M14 34c-4-2-6-6-6-11 5 0 9 3 11 7M34 34c4-2 6-6 6-11-5 0-9 3-11 7M17 40c9 4 14 4 14 0"/></symbol>
+        <symbol id="icon-dharma-wheel" viewBox="0 0 48 48"><circle cx="24" cy="24" r="19"/><circle cx="24" cy="24" r="4"/><path d="M24 5v8M24 35v8M43 24h-8M13 24H5M37.4 10.6l-5.6 5.6M16.2 31.8l-5.6 5.6M37.4 37.4l-5.6-5.6M16.2 16.2l-5.6-5.6"/></symbol>
+        <symbol id="icon-temple" viewBox="0 0 48 48"><path d="M24 4l6 8H18l6-8z"/><path d="M10 16h28v4H10zM14 20v20M34 20v20M20 20v20M28 20v20M8 40h32M12 24h6v6h-6zM30 24h6v6h-6z"/></symbol>
+        <symbol id="icon-meditation" viewBox="0 0 48 48"><circle cx="24" cy="12" r="4"/><path d="M24 16v6M10 38c2-8 8-12 14-12s12 4 14 12M6 40h36M18 22c-3 3-5 6-5 6M30 22c3 3 5 6 5 6"/></symbol>
+        <symbol id="icon-book" viewBox="0 0 48 48"><path d="M24 10c-4-3-10-4-16-3v27c6-1 12 0 16 3 4-3 10-4 16-3V7c-6-1-12 0-16 3z"/><path d="M24 10v27"/></symbol>
+        <symbol id="icon-people" viewBox="0 0 48 48"><circle cx="16" cy="14" r="5"/><circle cx="32" cy="14" r="5"/><path d="M4 38c1-8 6-12 12-12s11 4 12 12M20 38c1-8 6-12 12-12s11 4 12 12"/></symbol>
+        <symbol id="icon-bell" viewBox="0 0 48 48"><path d="M24 6v3M15 34c0-10 3-19 9-19s9 9 9 19H15z"/><path d="M11 34h26l-3 6H14z"/><circle cx="24" cy="43" r="2"/></symbol>
+        <symbol id="icon-leaf" viewBox="0 0 48 48"><path d="M10 38C6 22 18 8 40 8c2 20-10 32-30 30z"/><path d="M10 38C20 28 28 20 40 8"/></symbol>
+        <symbol id="icon-hands" viewBox="0 0 48 48"><path d="M24 6v20M24 6c-3 4-3 12 0 16M24 6c3 4 3 12 0 16M14 38c0-10 4-14 10-16M34 38c0-10-4-14-10-16M14 38h20v3H14z"/></symbol>
+        <symbol id="icon-light" viewBox="0 0 48 48"><circle cx="24" cy="20" r="9"/><path d="M24 33v5M17 42h14M24 2v4M6 20h4M38 20h4M11 7l3 3M37 7l-3 3"/></symbol>
+        <symbol id="icon-pin" viewBox="0 0 48 48"><path d="M24 44s14-15 14-25a14 14 0 10-28 0c0 10 14 25 14 25z"/><circle cx="24" cy="19" r="5"/></symbol>
+        <symbol id="icon-phone" viewBox="0 0 48 48"><path d="M12 8h6l3 8-4 3c2 6 6 10 12 12l3-4 8 3v6c0 2-2 4-4 4C20 40 8 28 8 12c0-2 2-4 4-4z"/></symbol>
+        <symbol id="icon-mail" viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="28" rx="3"/><path d="M6 13l18 14L42 13"/></symbol>
+        <symbol id="icon-clock" viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><path d="M24 14v10l7 5"/></symbol>
+        <symbol id="icon-calendar" viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="30" rx="3"/><path d="M6 18h36M15 6v8M33 6v8"/></symbol>
+        <symbol id="icon-arrow-up" viewBox="0 0 48 48"><path d="M24 36V12M12 24l12-12 12 12"/></symbol>
+        <symbol id="icon-fb" viewBox="0 0 48 48"><path d="M28 44V26h6l1-8h-7v-5c0-2 1-4 4-4h4V2c0 0-3 0-7 0-7 0-11 4-11 11v6h-7v8h7v18z"/></symbol>
+        <symbol id="icon-yt" viewBox="0 0 48 48"><rect x="4" y="12" width="40" height="24" rx="6"/><path d="M20 18l12 6-12 6z" fill="currentColor" stroke="none"/></symbol>
+        <symbol id="icon-chat" viewBox="0 0 48 48"><path d="M6 24c0-10 8-17 18-17s18 7 18 17-8 17-18 17c-3 0-6-1-8-2l-8 3 2-7c-3-3-4-7-4-11z"/></symbol>
+        <symbol id="icon-medal" viewBox="0 0 48 48"><circle cx="24" cy="28" r="12"/><path d="M24 20v16M18 24l6-4 6 4M16 8l6 12 6-12"/></symbol>
+        <symbol id="icon-sparkle" viewBox="0 0 48 48"><path d="M24 4l3 13 13 3-13 3-3 13-3-13-13-3 13-3z"/></symbol>
+        <symbol id="icon-graduate" viewBox="0 0 48 48"><path d="M4 18L24 9l20 9-20 9-20-9z"/><path d="M14 23v10c3 3 7 5 10 5s7-2 10-5V23M40 18v12"/></symbol>
+      </defs>
+    </svg>
+
+    <!-- Loading Overlay -->
+    <div class="ds-loader" id="loader">
+        <div class="ds-loader__lotus"><svg class="ds-icon"><use href="#icon-lotus"/></svg></div>
+    </div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="ds-progress" id="progressBar"></div>
 
     <!-- HEADER & NAVIGATION -->
     <header class="ds-header" id="header">
         <div class="ds-container ds-header__inner">
             <a href="#home" class="ds-header__brand" aria-label="Go to homepage">
                 <!-- [CUSTOMIZE]: You can replace this placeholder div with an actual <img> tag later -->
-                <div class="ds-header__logo-placeholder">🪷</div>
+                <div class="ds-header__logo-placeholder"><svg class="ds-icon"><use href="#icon-lotus"/></svg></div>
                 <span>Sri Jinanandha Dhamma School</span>
             </a>
 
-            <button class="ds-header__mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
-                ☰
+            <button class="ds-header__mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
             </button>
 
             <nav class="ds-nav" aria-label="Main Navigation">
@@ -903,65 +1111,78 @@
 
     <!-- HERO SECTION -->
     <section class="ds-hero" id="home">
-        <div class="ds-container">
+        <div class="ds-hero__rays" aria-hidden="true"></div>
+        <svg class="ds-hero__mandala" viewBox="0 0 200 200" aria-hidden="true">
+            <use href="#icon-dharma-wheel" style="color:var(--col-maroon)"/>
+        </svg>
+        <div class="ds-particles" id="heroParticles" aria-hidden="true"></div>
+
+        <div class="ds-container ds-hero__inner">
+            <div class="ds-hero__lotus-glow"><svg class="ds-icon"><use href="#icon-lotus"/></svg></div>
+
             <!-- [CUSTOMIZE]: Change Jubilee years if needed -->
             <div class="ds-hero__badge">
-                <span>✨</span> Golden Jubilee Celebration (1976 - 2026)
+                <svg class="ds-icon"><use href="#icon-sparkle"/></svg> Golden Jubilee Celebration (1976 – 2026)
             </div>
-            
-            <h1 class="ds-hero__title">
+
+            <h1 class="ds-hero__title" id="heroTitle">
                 <!-- [CUSTOMIZE]: Main headline -->
-                Guiding the Next Generation in the Pure Dhamma
+                Guiding the Next Generation in the <em>Pure Dhamma</em>
             </h1>
-            
+
             <p class="ds-hero__tagline">
                 <!-- [CUSTOMIZE]: School Tagline -->
                 Welcome to Sri Jinanandha English Medium Dhamma School. We provide a strong spiritual foundation, helping students build moral character for a peaceful and mindful life.
             </p>
-            
+
             <div class="ds-hero__actions">
-                <a href="#about" class="ds-btn ds-btn--primary">Learn Our Story</a>
-                <a href="#contact" class="ds-btn ds-btn--outline">Get in Touch</a>
+                <a href="#about" class="ds-btn ds-btn--primary ds-js-ripple">Learn Our Story</a>
+                <a href="#contact" class="ds-btn ds-btn--outline ds-js-ripple">Get in Touch</a>
             </div>
         </div>
     </section>
 
+    <div class="ds-divider ds-divider--to-white" aria-hidden="true">
+        <svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path fill="currentColor" d="M0,40 C200,90 350,0 600,30 C850,60 1000,0 1200,40 L1200,70 L0,70 Z"/></svg>
+    </div>
+
     <!-- ABOUT & HERITAGE SECTION -->
     <section class="ds-section ds-section--alternate" id="about">
         <div class="ds-container">
-            <div class="ds-section__header">
-                <h2 class="ds-section__title">Our Heritage & History</h2>
+            <div class="ds-section__header ds-reveal">
+                <span class="ds-eyebrow"><span class="ds-eyebrow__line"></span>Our Story<span class="ds-eyebrow__line"></span></span>
+                <h2 class="ds-section__title">Our Heritage &amp; History</h2>
                 <p class="ds-section__subtitle">A legacy of virtue, wisdom, and compassionate teaching.</p>
             </div>
 
             <div class="ds-about">
-                <div class="ds-about__content">
+                <div class="ds-about__content ds-reveal">
                     <!-- [CUSTOMIZE]: Add your school's 2-3 paragraph history here -->
                     <p>Marking the pride of half a century of noble Dhamma service, our Dhamma School began as a humble endeavor and stands unwavering today, having awakened the wisdom of thousands of children.</p>
                     <p>No matter how much society changes, our dedication to gifting the nation a virtuous, respectful, and moral generation through the pure teachings of the Buddha remains our highest priority. We guide children on the right path by cultivating loving-kindness (Metta) and patience in their hearts.</p>
                     <p>Supported by the Venerable Maha Sangha and our dedicated volunteer teachers, we continue to illuminate the spiritual path for our youth.</p>
                 </div>
 
-                <div class="ds-stats">
+                <div class="ds-stats ds-reveal-stagger">
                     <!-- [CUSTOMIZE]: Update these numerical statistics -->
                     <div class="ds-stat-card">
-                        <div class="ds-stat-card__icon">🏛️</div>
-                        <div class="ds-stat-card__value">1976</div>
+                        <div class="ds-stat-card__icon"><svg class="ds-icon"><use href="#icon-temple"/></svg></div>
+                        <div class="ds-stat-card__value" data-count="1976" data-suffix="">0</div>
                         <div class="ds-stat-card__label">Year Founded</div>
                     </div>
                     <div class="ds-stat-card">
-                        <div class="ds-stat-card__icon">👨‍🎓</div>
-                        <div class="ds-stat-card__value">500+</div>
+                        <div class="ds-stat-card__icon"><svg class="ds-icon"><use href="#icon-graduate"/></svg></div>
+                        <div class="ds-stat-card__value" data-count="500" data-suffix="+">0</div>
                         <div class="ds-stat-card__label">Current Students</div>
                     </div>
                     <div class="ds-stat-card">
-                        <div class="ds-stat-card__icon">👨‍🏫</div>
-                        <div class="ds-stat-card__value">25</div>
+                        <div class="ds-stat-card__icon"><svg class="ds-icon"><use href="#icon-people"/></svg></div>
+                        <div class="ds-stat-card__value" data-count="25" data-suffix="">0</div>
                         <div class="ds-stat-card__label">Volunteer Teachers</div>
                     </div>
                     <div class="ds-stat-card">
-                        <div class="ds-stat-card__icon">🎖️</div>
-                        <div class="ds-stat-card__value">10k+</div>
+                        <div class="ds-stat-card__icon"><svg class="ds-icon"><use href="#icon-medal"/></svg></div>
+                        <div class="ds-stat-card__value" data-count="10" data-suffix="k+">0</div>
                         <div class="ds-stat-card__label">Proud Alumni</div>
                     </div>
                 </div>
@@ -972,8 +1193,9 @@
     <!-- MISSION & VALUES SECTION -->
     <section class="ds-section" id="mission">
         <div class="ds-container">
-            <div class="ds-section__header">
-                <h2 class="ds-section__title">Our Mission & Core Values</h2>
+            <div class="ds-section__header ds-reveal">
+                <span class="ds-eyebrow"><span class="ds-eyebrow__line"></span>What We Stand For<span class="ds-eyebrow__line"></span></span>
+                <h2 class="ds-section__title">Our Mission &amp; Core Values</h2>
                 <p class="ds-section__subtitle">
                     <!-- [CUSTOMIZE]: Write your school's core mission statement -->
                     To impart the teachings of Buddhism in English, fostering discipline, mindfulness, and empathy in our youth to navigate modern challenges.
@@ -981,32 +1203,32 @@
             </div>
 
             <!-- Core Pillars -->
-            <div class="ds-values-grid">
+            <div class="ds-values-grid ds-reveal-stagger">
                 <!-- [CUSTOMIZE]: Modify pillar titles and descriptions -->
                 <div class="ds-value-card">
-                    <div class="ds-value-card__icon">💡</div>
+                    <div class="ds-value-card__icon"><svg class="ds-icon"><use href="#icon-light"/></svg></div>
                     <h3 class="ds-value-card__title">Wisdom (Paññā)</h3>
                     <p class="ds-value-card__desc">Cultivating deep understanding of the Dhamma through structured English-medium education.</p>
                 </div>
                 <div class="ds-value-card">
-                    <div class="ds-value-card__icon">❤️</div>
+                    <div class="ds-value-card__icon"><svg class="ds-icon"><use href="#icon-hands"/></svg></div>
                     <h3 class="ds-value-card__title">Compassion (Mettā)</h3>
                     <p class="ds-value-card__desc">Teaching children to approach all living beings with boundless loving-kindness.</p>
                 </div>
                 <div class="ds-value-card">
-                    <div class="ds-value-card__icon">🌱</div>
+                    <div class="ds-value-card__icon"><svg class="ds-icon"><use href="#icon-leaf"/></svg></div>
                     <h3 class="ds-value-card__title">Virtue (Sīla)</h3>
                     <p class="ds-value-card__desc">Building strong moral character based on the timeless precepts of the Buddha.</p>
                 </div>
                 <div class="ds-value-card">
-                    <div class="ds-value-card__icon">🧘</div>
+                    <div class="ds-value-card__icon"><svg class="ds-icon"><use href="#icon-meditation"/></svg></div>
                     <h3 class="ds-value-card__title">Mindfulness (Sati)</h3>
                     <p class="ds-value-card__desc">Practicing daily meditation to develop focus, calmness, and mental clarity.</p>
                 </div>
             </div>
 
             <!-- The Five Precepts -->
-            <div class="ds-precepts">
+            <div class="ds-precepts ds-reveal">
                 <h3 class="ds-precepts__title">Guiding Principles: The Five Noble Precepts</h3>
                 <ul class="ds-precepts__list">
                     <!-- [CUSTOMIZE]: Precept descriptions can be adjusted -->
@@ -1020,17 +1242,22 @@
         </div>
     </section>
 
+    <div class="ds-divider" aria-hidden="true">
+        <svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path fill="currentColor" d="M0,30 C250,0 350,60 600,35 C850,10 950,60 1200,20 L1200,70 L0,70 Z"/></svg>
+    </div>
+
     <!-- COMMUNITY SECTION (TABS) -->
     <section class="ds-section ds-section--alternate" id="community">
         <div class="ds-container">
-            <div class="ds-section__header">
+            <div class="ds-section__header ds-reveal">
+                <span class="ds-eyebrow"><span class="ds-eyebrow__line"></span>The People<span class="ds-eyebrow__line"></span></span>
                 <h2 class="ds-section__title">Our Dhamma Community</h2>
                 <p class="ds-section__subtitle">Meet the dedicated individuals who make our school a sanctuary of learning.</p>
             </div>
 
             <!-- Tab Controls -->
             <div class="ds-tabs" role="tablist">
-                <button class="ds-tabs__btn ds-tabs__btn--active" onclick="openTab(event, 'facultyTab')" role="tab" aria-selected="true">Faculty & Teachers</button>
+                <button class="ds-tabs__btn ds-tabs__btn--active" onclick="openTab(event, 'facultyTab')" role="tab" aria-selected="true">Faculty &amp; Teachers</button>
                 <button class="ds-tabs__btn" onclick="openTab(event, 'studentTab')" role="tab" aria-selected="false">Student Leadership</button>
             </div>
 
@@ -1039,25 +1266,25 @@
                 <div class="ds-profile-grid">
                     <!-- [CUSTOMIZE]: Replace Faculty details -->
                     <div class="ds-profile-card">
-                        <div class="ds-profile-card__avatar">🙏</div>
+                        <div class="ds-profile-card__avatar"><svg class="ds-icon"><use href="#icon-hands"/></svg></div>
                         <h4 class="ds-profile-card__name">Ven. [Monk Name] Thero</h4>
                         <p class="ds-profile-card__role">Principal Monk</p>
                         <p class="ds-profile-card__bio">Guiding the spiritual direction of the school with over 20 years of Dhamma teaching experience.</p>
                     </div>
                     <div class="ds-profile-card">
-                        <div class="ds-profile-card__avatar">👩‍🏫</div>
+                        <div class="ds-profile-card__avatar"><svg class="ds-icon"><use href="#icon-book"/></svg></div>
                         <h4 class="ds-profile-card__name">Mrs. [Teacher Name]</h4>
                         <p class="ds-profile-card__role">Academic Director</p>
                         <p class="ds-profile-card__bio">Ensuring the English-medium curriculum aligns beautifully with traditional Buddhist values.</p>
                     </div>
                     <div class="ds-profile-card">
-                        <div class="ds-profile-card__avatar">👨‍🏫</div>
+                        <div class="ds-profile-card__avatar"><svg class="ds-icon"><use href="#icon-book"/></svg></div>
                         <h4 class="ds-profile-card__name">Mr. [Teacher Name]</h4>
                         <p class="ds-profile-card__role">Senior Dhamma Instructor</p>
                         <p class="ds-profile-card__bio">Specializes in teaching Abhidhamma and practical application of Buddha's teachings.</p>
                     </div>
                     <div class="ds-profile-card">
-                        <div class="ds-profile-card__avatar">🧘‍♀️</div>
+                        <div class="ds-profile-card__avatar"><svg class="ds-icon"><use href="#icon-meditation"/></svg></div>
                         <h4 class="ds-profile-card__name">Ms. [Teacher Name]</h4>
                         <p class="ds-profile-card__role">Mindfulness Facilitator</p>
                         <p class="ds-profile-card__bio">Leads weekly meditation sessions for both primary and advanced level students.</p>
@@ -1070,19 +1297,19 @@
                 <div class="ds-profile-grid">
                     <!-- [CUSTOMIZE]: Replace Student Leader details -->
                     <div class="ds-profile-card">
-                        <div class="ds-profile-card__avatar">👑</div>
+                        <div class="ds-profile-card__avatar"><svg class="ds-icon"><use href="#icon-medal"/></svg></div>
                         <h4 class="ds-profile-card__name">[Student Name]</h4>
                         <p class="ds-profile-card__role">Head Prefect</p>
                         <p class="ds-profile-card__bio">Exemplifying discipline and compassion, guiding fellow students by example.</p>
                     </div>
                     <div class="ds-profile-card">
-                        <div class="ds-profile-card__avatar">⭐</div>
+                        <div class="ds-profile-card__avatar"><svg class="ds-icon"><use href="#icon-sparkle"/></svg></div>
                         <h4 class="ds-profile-card__name">[Student Name]</h4>
                         <p class="ds-profile-card__role">Deputy Head Prefect</p>
                         <p class="ds-profile-card__bio">Assisting in organizing school ceremonies and maintaining harmony among students.</p>
                     </div>
                     <div class="ds-profile-card">
-                        <div class="ds-profile-card__avatar">👥</div>
+                        <div class="ds-profile-card__avatar"><svg class="ds-icon"><use href="#icon-people"/></svg></div>
                         <h4 class="ds-profile-card__name">Student Council</h4>
                         <p class="ds-profile-card__role">Prefects Guild</p>
                         <p class="ds-profile-card__bio">A dedicated group of senior students organizing Dāna programs and temple clean-ups.</p>
@@ -1096,14 +1323,16 @@
     <!-- EVENTS & CALENDAR SECTION -->
     <section class="ds-section" id="events">
         <div class="ds-container">
-            <div class="ds-section__header">
-                <h2 class="ds-section__title">Spiritual Calendar & Events</h2>
+            <div class="ds-section__header ds-reveal">
+                <span class="ds-eyebrow"><span class="ds-eyebrow__line"></span>Mark Your Calendar<span class="ds-eyebrow__line"></span></span>
+                <h2 class="ds-section__title">Spiritual Calendar &amp; Events</h2>
                 <p class="ds-section__subtitle">Join us in celebrating these significant days in the Buddhist calendar.</p>
             </div>
 
             <div class="ds-timeline">
                 <!-- [CUSTOMIZE]: Update Event Names, Dates, and Descriptions -->
-                <div class="ds-timeline__item ds-timeline__item--left">
+                <div class="ds-timeline__item ds-timeline__item--left ds-reveal">
+                    <div class="ds-timeline__marker"><svg class="ds-icon"><use href="#icon-calendar"/></svg></div>
                     <div class="ds-timeline__content">
                         <span class="ds-timeline__date">July 5, [YEAR]</span>
                         <h3 class="ds-timeline__title">Poson Poya Celebration</h3>
@@ -1111,7 +1340,8 @@
                     </div>
                 </div>
 
-                <div class="ds-timeline__item ds-timeline__item--right">
+                <div class="ds-timeline__item ds-timeline__item--right ds-reveal">
+                    <div class="ds-timeline__marker"><svg class="ds-icon"><use href="#icon-sparkle"/></svg></div>
                     <div class="ds-timeline__content">
                         <span class="ds-timeline__date">August 16, 2026</span>
                         <h3 class="ds-timeline__title">50th Golden Jubilee Ceremony</h3>
@@ -1119,7 +1349,8 @@
                     </div>
                 </div>
 
-                <div class="ds-timeline__item ds-timeline__item--left">
+                <div class="ds-timeline__item ds-timeline__item--left ds-reveal">
+                    <div class="ds-timeline__marker"><svg class="ds-icon"><use href="#icon-medal"/></svg></div>
                     <div class="ds-timeline__content">
                         <span class="ds-timeline__date">October 20, [YEAR]</span>
                         <h3 class="ds-timeline__title">Annual Prize Giving</h3>
@@ -1127,7 +1358,8 @@
                     </div>
                 </div>
 
-                <div class="ds-timeline__item ds-timeline__item--right">
+                <div class="ds-timeline__item ds-timeline__item--right ds-reveal">
+                    <div class="ds-timeline__marker"><svg class="ds-icon"><use href="#icon-hands"/></svg></div>
                     <div class="ds-timeline__content">
                         <span class="ds-timeline__date">November 14, [YEAR]</span>
                         <h3 class="ds-timeline__title">Katina Pinkama</h3>
@@ -1135,10 +1367,11 @@
                     </div>
                 </div>
 
-                <div class="ds-timeline__item ds-timeline__item--left">
+                <div class="ds-timeline__item ds-timeline__item--left ds-reveal">
+                    <div class="ds-timeline__marker"><svg class="ds-icon"><use href="#icon-leaf"/></svg></div>
                     <div class="ds-timeline__content">
                         <span class="ds-timeline__date">December 25, [YEAR]</span>
-                        <h3 class="ds-timeline__title">Bodhi Puja & Year-End Blessings</h3>
+                        <h3 class="ds-timeline__title">Bodhi Puja &amp; Year-End Blessings</h3>
                         <p>A serene evening Bodhi Puja to invoke blessings for the upcoming new year for all beings.</p>
                     </div>
                 </div>
@@ -1146,20 +1379,25 @@
         </div>
     </section>
 
+    <div class="ds-divider ds-divider--to-white" aria-hidden="true">
+        <svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path fill="currentColor" d="M0,40 C200,90 350,0 600,30 C850,60 1000,0 1200,40 L1200,70 L0,70 Z"/></svg>
+    </div>
+
     <!-- CONTACT SECTION -->
     <section class="ds-section ds-section--alternate" id="contact">
         <div class="ds-container">
-            <div class="ds-section__header">
+            <div class="ds-section__header ds-reveal">
+                <span class="ds-eyebrow"><span class="ds-eyebrow__line"></span>Reach Us<span class="ds-eyebrow__line"></span></span>
                 <h2 class="ds-section__title">Get in Touch</h2>
                 <p class="ds-section__subtitle">We welcome all inquiries regarding admissions, syllabus, or general information.</p>
             </div>
 
             <div class="ds-contact">
                 <!-- Contact Info -->
-                <div class="ds-contact__info-box">
+                <div class="ds-contact__info-box ds-reveal">
                     <!-- [CUSTOMIZE]: Update all contact details below -->
                     <div class="ds-contact__detail">
-                        <div class="ds-contact__icon">📍</div>
+                        <div class="ds-contact__icon"><svg class="ds-icon"><use href="#icon-pin"/></svg></div>
                         <div class="ds-contact__text">
                             <h4>Temple Location</h4>
                             <p>Sri Jinanandha Temple Premises
@@ -1167,26 +1405,26 @@
                             Polonnaruwa, Sri Lanka</p>
                         </div>
                     </div>
-                    
+
                     <div class="ds-contact__detail">
-                        <div class="ds-contact__icon">📞</div>
+                        <div class="ds-contact__icon"><svg class="ds-icon"><use href="#icon-phone"/></svg></div>
                         <div class="ds-contact__text">
                             <h4>Contact Numbers</h4>
                             <p>Office: +94 (0) 27 XXX XXXX
                             Mobile: +94 (0) 7X XXX XXXX</p>
                         </div>
                     </div>
-                    
+
                     <div class="ds-contact__detail">
-                        <div class="ds-contact__icon">📧</div>
+                        <div class="ds-contact__icon"><svg class="ds-icon"><use href="#icon-mail"/></svg></div>
                         <div class="ds-contact__text">
                             <h4>Email Address</h4>
                             <p>info@srijinanandha-dhamma.lk</p>
                         </div>
                     </div>
-                    
+
                     <div class="ds-contact__detail">
-                        <div class="ds-contact__icon">⏰</div>
+                        <div class="ds-contact__icon"><svg class="ds-icon"><use href="#icon-clock"/></svg></div>
                         <div class="ds-contact__text">
                             <h4>School Hours</h4>
                             <p>Sunday: 8:00 AM - 1:00 PM
@@ -1196,31 +1434,32 @@
                 </div>
 
                 <!-- Contact Form -->
-                <form class="ds-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+                <form class="ds-form ds-reveal" id="contactForm" onsubmit="handleFormSubmit(event)">
                     <div class="ds-form__group">
                         <label for="name" class="ds-form__label">Full Name *</label>
                         <input type="text" id="name" class="ds-form__input" required placeholder="Enter your name">
                     </div>
-                    
+
                     <div class="ds-form__group">
                         <label for="email" class="ds-form__label">Email Address *</label>
                         <input type="email" id="email" class="ds-form__input" required placeholder="Enter your email">
                     </div>
-                    
+
                     <div class="ds-form__group">
                         <label for="subject" class="ds-form__label">Subject</label>
                         <input type="text" id="subject" class="ds-form__input" placeholder="What is this regarding?">
                     </div>
-                    
+
                     <div class="ds-form__group">
                         <label for="message" class="ds-form__label">Message *</label>
                         <textarea id="message" class="ds-form__textarea" required placeholder="Write your message here..."></textarea>
                     </div>
-                    
-                    <button type="submit" class="ds-btn ds-btn--primary" style="width: 100%;">Send Message</button>
-                    
+
+                    <button type="submit" class="ds-btn ds-btn--primary ds-js-ripple" style="width: 100%;">Send Message</button>
+
                     <div class="ds-form__message" id="formMessage">
-                        Thank you for your message. We will get back to you soon. May the Noble Triple Gem bless you! 🙏
+                        <svg class="ds-icon" style="width:18px;height:18px;flex-shrink:0;"><use href="#icon-lotus"/></svg>
+                        Thank you for your message. We will get back to you soon. May the Noble Triple Gem bless you!
                     </div>
                 </form>
             </div>
@@ -1229,15 +1468,19 @@
 
     <!-- FOOTER -->
     <footer class="ds-footer">
+        <svg class="ds-footer__wheel" viewBox="0 0 48 48" aria-hidden="true"><use href="#icon-dharma-wheel"/></svg>
         <div class="ds-container">
             <div class="ds-footer__grid">
-                
+
                 <div class="ds-footer__brand">
-                    <h3>Sri Jinanandha Dhamma School</h3>
-                    <!-- [CUSTOMIZE]: Footer short bio -->
-                    <p>Dedicated to providing a strong spiritual foundation and teaching the profound teachings of the Buddha in the English medium, helping students build moral character.</p>
+                    <div class="ds-footer__brand-icon"><svg class="ds-icon"><use href="#icon-lotus"/></svg></div>
+                    <div>
+                        <h3>Sri Jinanandha Dhamma School</h3>
+                        <!-- [CUSTOMIZE]: Footer short bio -->
+                        <p>Dedicated to providing a strong spiritual foundation and teaching the profound teachings of the Buddha in the English medium, helping students build moral character.</p>
+                    </div>
                 </div>
-                
+
                 <div>
                     <h4 class="ds-footer__title">Quick Links</h4>
                     <ul class="ds-footer__links">
@@ -1248,33 +1491,41 @@
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="ds-footer__title">Connect With Us</h4>
                     <!-- [CUSTOMIZE]: Update Social Links -->
                     <div class="ds-footer__social">
-                        <a href="#" aria-label="Facebook">📘</a>
-                        <a href="#" aria-label="YouTube">▶️</a>
-                        <a href="#" aria-label="WhatsApp">💬</a>
+                        <a href="#" aria-label="Facebook"><svg class="ds-icon"><use href="#icon-fb"/></svg></a>
+                        <a href="#" aria-label="YouTube"><svg class="ds-icon"><use href="#icon-yt"/></svg></a>
+                        <a href="#" aria-label="WhatsApp"><svg class="ds-icon"><use href="#icon-chat"/></svg></a>
                     </div>
                 </div>
 
             </div>
-            
+
             <div class="ds-footer__bottom">
                 <p>&copy; <span id="currentYear"></span> Sri Jinanandha English Medium Dhamma School. All rights reserved.</p>
-                <p style="margin-top: 8px; color: var(--col-gold);">"May the Noble Triple Gem bless you with wisdom, peace, and compassion." 🙏</p>
+                <p style="margin-top: 8px; color: var(--col-gold-light);">"May the Noble Triple Gem bless you with wisdom, peace, and compassion." 🙏</p>
             </div>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button class="ds-back-top" id="backTopBtn" onclick="scrollToTop()" aria-label="Back to top">↑</button>
+    <button class="ds-back-top" id="backTopBtn" onclick="scrollToTop()" aria-label="Back to top">
+        <svg class="ds-icon"><use href="#icon-arrow-up"/></svg>
+    </button>
 
     <script>
         /* ==========================================================================
            JAVASCRIPT INTERACTIVITY
            ========================================================================== */
+
+        // 0. Loading overlay — hide once page is ready
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => loader.classList.add('ds-loader--hidden'), 350);
+        });
 
         // 1. Mobile Menu Toggle
         const mobileToggle = document.getElementById('mobileToggle');
@@ -1283,28 +1534,39 @@
 
         mobileToggle.addEventListener('click', () => {
             navList.classList.toggle('ds-nav__list--open');
+            mobileToggle.classList.toggle('ds-header__mobile-toggle--open');
+            const isOpen = navList.classList.contains('ds-nav__list--open');
+            mobileToggle.setAttribute('aria-expanded', isOpen);
         });
 
         // Close mobile menu when clicking a link
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 navList.classList.remove('ds-nav__list--open');
+                mobileToggle.classList.remove('ds-header__mobile-toggle--open');
             });
         });
 
-        // 2. Sticky Header & Back to Top Button visibility on scroll
+        // 2. Sticky Header, Back to Top visibility, and Scroll Progress Bar
         const header = document.getElementById('header');
         const backTopBtn = document.getElementById('backTopBtn');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
+        const progressBar = document.getElementById('progressBar');
+
+        function onScroll() {
+            const scrollY = window.scrollY;
+            if (scrollY > 50) {
                 header.classList.add('ds-header--scrolled');
                 backTopBtn.classList.add('ds-back-top--visible');
             } else {
                 header.classList.remove('ds-header--scrolled');
                 backTopBtn.classList.remove('ds-back-top--visible');
             }
-        });
+
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+            progressBar.style.width = progress + '%';
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
 
         // Scroll to top function
         function scrollToTop() {
@@ -1313,20 +1575,15 @@
 
         // 3. Tab Switching Logic (Community Section)
         function openTab(evt, tabId) {
-            // Hide all tab panes
             const tabPanes = document.querySelectorAll('.ds-tabs__pane');
-            tabPanes.forEach(pane => {
-                pane.classList.remove('ds-tabs__pane--active');
-            });
+            tabPanes.forEach(pane => pane.classList.remove('ds-tabs__pane--active'));
 
-            // Remove active class from all buttons
             const tabBtns = document.querySelectorAll('.ds-tabs__btn');
             tabBtns.forEach(btn => {
                 btn.classList.remove('ds-tabs__btn--active');
                 btn.setAttribute('aria-selected', 'false');
             });
 
-            // Show current tab and add active class to button
             document.getElementById(tabId).classList.add('ds-tabs__pane--active');
             evt.currentTarget.classList.add('ds-tabs__btn--active');
             evt.currentTarget.setAttribute('aria-selected', 'true');
@@ -1334,16 +1591,14 @@
 
         // 4. Scrollspy (Highlight active navigation link based on scroll position)
         const sections = document.querySelectorAll('section[id]');
-        
+
         window.addEventListener('scroll', () => {
             let current = '';
             const scrollY = window.pageYOffset;
 
             sections.forEach(section => {
                 const sectionHeight = section.offsetHeight;
-                // Offset calculation (header height + buffer)
-                const sectionTop = section.offsetTop - 100; 
-                
+                const sectionTop = section.offsetTop - 100;
                 if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
                     current = section.getAttribute('id');
                 }
@@ -1355,28 +1610,105 @@
                     link.classList.add('ds-nav__link--active');
                 }
             });
-        });
+        }, { passive: true });
 
         // 5. Form Submission Handler (Prevents default refresh and shows message)
         function handleFormSubmit(event) {
-            event.preventDefault(); // Stop page reload
-            
-            // In a real scenario, you would send data to a backend here.
-            // For now, we just show the success message.
+            event.preventDefault();
             const messageBox = document.getElementById('formMessage');
-            messageBox.style.display = 'block';
-            
-            // Clear the form fields
+            messageBox.style.display = 'flex';
             document.getElementById('contactForm').reset();
-            
-            // Hide message after 5 seconds
-            setTimeout(() => {
-                messageBox.style.display = 'none';
-            }, 5000);
+            setTimeout(() => { messageBox.style.display = 'none'; }, 5000);
         }
 
         // 6. Set current year in footer automatically
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // 7. Scroll reveal animations (IntersectionObserver)
+        const revealEls = document.querySelectorAll('.ds-reveal, .ds-reveal-stagger');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+        revealEls.forEach(el => revealObserver.observe(el));
+
+        // 8. Animated counters for stats
+        const counterEls = document.querySelectorAll('[data-count]');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.getAttribute('data-count'), 10);
+                    const suffix = el.getAttribute('data-suffix') || '';
+                    const duration = 1400;
+                    const start = performance.now();
+                    function tick(now) {
+                        const progress = Math.min((now - start) / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        el.textContent = Math.floor(eased * target) + suffix;
+                        if (progress < 1) requestAnimationFrame(tick);
+                        else el.textContent = target + suffix;
+                    }
+                    requestAnimationFrame(tick);
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        counterEls.forEach(el => counterObserver.observe(el));
+
+        // 9. Hero title word-by-word reveal
+        (function initHeroTitle() {
+            const titleEl = document.getElementById('heroTitle');
+            const raw = titleEl.innerHTML;
+            // Split on spaces while preserving the <em> tag as a single token
+            const tokens = raw.trim().split(/\s+/);
+            let delay = 0.25;
+            const wrapped = tokens.map(tok => {
+                const span = `<span style="animation-delay:${delay.toFixed(2)}s">${tok}</span>`;
+                delay += 0.09;
+                return span;
+            }).join(' ');
+            titleEl.innerHTML = wrapped;
+        })();
+
+        // 10. Floating golden particles in hero
+        (function initParticles() {
+            const container = document.getElementById('heroParticles');
+            const count = window.innerWidth < 768 ? 10 : 20;
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('div');
+                p.className = 'ds-particle';
+                const size = 3 + Math.random() * 5;
+                p.style.setProperty('--size', size + 'px');
+                p.style.setProperty('--x', Math.random() * 100 + '%');
+                p.style.setProperty('--dur', (10 + Math.random() * 10) + 's');
+                p.style.setProperty('--delay', (Math.random() * 14) + 's');
+                container.appendChild(p);
+            }
+        })();
+
+        // 11. Button ripple effect
+        document.querySelectorAll('.ds-js-ripple').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                const rect = this.getBoundingClientRect();
+                const ripple = document.createElement('span');
+                const size = Math.max(rect.width, rect.height);
+                ripple.className = 'ds-btn__ripple';
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+                ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 650);
+            });
+        });
+
+        // 12. Lazy-load ready hook for future <img loading="lazy"> replacements
+        document.querySelectorAll('img').forEach(img => {
+            if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
+        });
     </script>
 </body>
-</html>
